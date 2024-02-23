@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulatore Pianeti", "Simulatore Pianeti\Simulatore Pianeti.csproj", "{2E7DAE0A-648B-4457-A0BC-A8CB9714B4DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E7DAE0A-648B-4457-A0BC-A8CB9714B4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7DAE0A-648B-4457-A0BC-A8CB9714B4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7DAE0A-648B-4457-A0BC-A8CB9714B4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7DAE0A-648B-4457-A0BC-A8CB9714B4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6E36C56-D6A8-4734-9C82-1E167B791FCE}
+	EndGlobalSection
+EndGlobal
