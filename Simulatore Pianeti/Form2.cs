@@ -38,8 +38,9 @@ namespace Simulatore_Pianeti
         {
             for (int x = 0; x <= velocita; x++)
             {
-                planetario.Muovi();
+                planetario.Move();
             }
+
             Invalidate();
 
             if (pianeta != null)
@@ -47,14 +48,8 @@ namespace Simulatore_Pianeti
                 label.Text = InformazioniPianeta(pianeta);
             }
 
-            TassoAggiornamento();
-
-            cronometro_fps.Restart();
-        }
-
-        private void TassoAggiornamento()
-        {
             lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString();
+            cronometro_fps.Restart();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -62,7 +57,6 @@ namespace Simulatore_Pianeti
             Graphics g = CreateGraphics();
             foreach (Pianeta p in planetario.Pianeti)
             {
-
                 if (p.Raggio > 8e7d)
                 {
                     float x = (float)Math.Round(p.Posizione.X / 1e9d) - (float)(p.Raggio / 1e7d / 2);
