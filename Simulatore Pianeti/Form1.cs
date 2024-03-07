@@ -58,11 +58,6 @@ namespace Simulatore_Pianeti
 
         }
 
-        private void Colori_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Color colore = (Color)Colori.SelectedItem;
-        }
-
         private void Play_Click(object sender, EventArgs e)
         {
 

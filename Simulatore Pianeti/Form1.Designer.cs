@@ -192,7 +192,6 @@
             this.Colori.Name = "Colori";
             this.Colori.Size = new System.Drawing.Size(121, 21);
             this.Colori.TabIndex = 14;
-            this.Colori.SelectedIndexChanged += new System.EventHandler(this.Colori_SelectedIndexChanged);
             // 
             // Form1
             // 
