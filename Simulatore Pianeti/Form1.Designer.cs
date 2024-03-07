@@ -55,10 +55,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(164, 173);
+            this.button1.Location = new System.Drawing.Point(310, 69);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 28);
+            this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 0;
             this.button1.Text = "Play";
             this.button1.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(173, 102);
+            this.Add.Location = new System.Drawing.Point(310, 12);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 23);
             this.Add.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(173, 131);
+            this.Remove.Location = new System.Drawing.Point(310, 41);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(75, 23);
             this.Remove.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             // S
             // 
-            this.S.Location = new System.Drawing.Point(164, -3);
+            this.S.Location = new System.Drawing.Point(164, 9);
             this.S.Name = "S";
             this.S.Size = new System.Drawing.Size(100, 22);
             this.S.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // m
             // 
-            this.m.Location = new System.Drawing.Point(173, 64);
+            this.m.Location = new System.Drawing.Point(166, 68);
             this.m.Name = "m";
             this.m.Size = new System.Drawing.Size(100, 22);
             this.m.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             // V
             // 
-            this.V.Location = new System.Drawing.Point(173, 25);
+            this.V.Location = new System.Drawing.Point(165, 37);
             this.V.Name = "V";
             this.V.Size = new System.Drawing.Size(100, 22);
             this.V.TabIndex = 6;
@@ -121,7 +121,7 @@
             this.Controls.Add(this.Add);
             this.Controls.Add(this.Pianeti);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
