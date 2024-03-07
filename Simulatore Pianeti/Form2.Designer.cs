@@ -37,7 +37,8 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 25;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label
             // 
@@ -68,6 +69,9 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form2_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

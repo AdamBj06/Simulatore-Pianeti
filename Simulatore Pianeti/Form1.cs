@@ -103,9 +103,9 @@ namespace Simulatore_Pianeti
             switch(cmb_esempi.SelectedIndex)
             {
                 case 0:
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8, 2e30, new Vettore(1e9 * (Width / 3), 1e9d * (Height / 2)), new Vettore(0, 0)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6, 6e24, new Vettore(1e9 * (Width / 3) + 1.49597870e11d, 1e9d * (Height / 2)), new Vettore(0, 2.972222e4d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6, 6.39e23, new Vettore(1e9 * (Width / 3) + 2.28e11d, 1e9d * (Height / 2)), new Vettore(0, 2.413e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.49597870e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(1e9d * 453.3d + 2.28e11d, 1e9d * 382.5d), new Vettore(0d, 2.413e4d)));
                     break;
                 default:
                     break;

@@ -14,10 +14,10 @@ namespace Simulatore_Pianeti
 {
     public partial class Form2 : Form
     {
-        Planetario planetario;
-        Pianeta pianeta;
-        Stopwatch cronometro_fps;
-        int velocita;
+        public Planetario planetario;
+        public Pianeta pianeta;
+        public Stopwatch cronometro_fps;
+        public int velocita;
 
         public Form2()
         {
@@ -30,7 +30,7 @@ namespace Simulatore_Pianeti
             planetario = Form1.planetario;
             cronometro_fps = new Stopwatch();
             velocita = 60 * 60;
-            planetario.DeltaT = 20;
+            planetario.DeltaT = 20d;
             cronometro_fps.Start();
         }
 
@@ -52,7 +52,7 @@ namespace Simulatore_Pianeti
             cronometro_fps.Restart();
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        private void Form2_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
             foreach (Pianeta p in planetario.Pianeti)
@@ -73,7 +73,7 @@ namespace Simulatore_Pianeti
             }
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             //stop/start
             if (e.KeyCode == Keys.Space && timer1.Enabled == true)
@@ -106,11 +106,11 @@ namespace Simulatore_Pianeti
                 timer1_Tick(sender, e);
                 planetario.DeltaT = -planetario.DeltaT / 16;
             }
-            if (e.KeyCode == Keys.Oemcomma)//avanti 1 tick [,]
+            if (e.KeyCode == Keys.OemPeriod)//avanti 1 tick [,]
             {
                 timer1_Tick(sender, e);
             }
-            if (e.KeyCode == Keys.OemPeriod)//indietro 1 tick [.]
+            if (e.KeyCode == Keys.Oemcomma)//indietro 1 tick [.]
             {
                 planetario.DeltaT = -planetario.DeltaT;
                 timer1_Tick(sender, e);
@@ -118,7 +118,7 @@ namespace Simulatore_Pianeti
             }
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        private void Form2_MouseClick(object sender, MouseEventArgs e)
         {
             foreach (Pianeta p in planetario.Pianeti)
             {
