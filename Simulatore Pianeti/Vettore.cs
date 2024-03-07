@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vettori
+namespace Simulatore_Pianeti
 {
     public class Vettore
     {

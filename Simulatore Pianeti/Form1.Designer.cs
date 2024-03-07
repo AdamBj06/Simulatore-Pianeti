@@ -52,14 +52,14 @@
             this.lst_Pianeti.Location = new System.Drawing.Point(9, 11);
             this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
-            this.lst_Pianeti.Size = new System.Drawing.Size(255, 381);
+            this.lst_Pianeti.Size = new System.Drawing.Size(416, 381);
             this.lst_Pianeti.TabIndex = 1;
             // 
             // btn_play
             // 
             this.btn_play.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_play.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_play.Location = new System.Drawing.Point(428, 142);
+            this.btn_play.Location = new System.Drawing.Point(589, 142);
             this.btn_play.Margin = new System.Windows.Forms.Padding(2);
             this.btn_play.Name = "btn_play";
             this.btn_play.Size = new System.Drawing.Size(68, 68);
@@ -72,7 +72,7 @@
             // 
             this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(272, 142);
+            this.btn_add.Location = new System.Drawing.Point(433, 142);
             this.btn_add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(68, 68);
@@ -85,7 +85,7 @@
             // 
             this.btn_remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btn_remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_remove.Location = new System.Drawing.Point(344, 142);
+            this.btn_remove.Location = new System.Drawing.Point(505, 142);
             this.btn_remove.Margin = new System.Windows.Forms.Padding(2);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(80, 68);
@@ -96,7 +96,7 @@
             // 
             // txt_posizione
             // 
-            this.txt_posizione.Location = new System.Drawing.Point(365, 59);
+            this.txt_posizione.Location = new System.Drawing.Point(526, 59);
             this.txt_posizione.Margin = new System.Windows.Forms.Padding(2);
             this.txt_posizione.Name = "txt_posizione";
             this.txt_posizione.Size = new System.Drawing.Size(131, 20);
@@ -104,7 +104,7 @@
             // 
             // txt_massa
             // 
-            this.txt_massa.Location = new System.Drawing.Point(365, 35);
+            this.txt_massa.Location = new System.Drawing.Point(526, 35);
             this.txt_massa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_massa.Name = "txt_massa";
             this.txt_massa.Size = new System.Drawing.Size(131, 20);
@@ -112,7 +112,7 @@
             // 
             // txt_velocità
             // 
-            this.txt_velocità.Location = new System.Drawing.Point(365, 83);
+            this.txt_velocità.Location = new System.Drawing.Point(526, 83);
             this.txt_velocità.Margin = new System.Windows.Forms.Padding(2);
             this.txt_velocità.Name = "txt_velocità";
             this.txt_velocità.Size = new System.Drawing.Size(131, 20);
@@ -121,7 +121,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 66);
+            this.label1.Location = new System.Drawing.Point(430, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 7;
@@ -130,7 +130,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 90);
+            this.label2.Location = new System.Drawing.Point(430, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 8;
@@ -139,7 +139,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(269, 42);
+            this.label3.Location = new System.Drawing.Point(430, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 9;
@@ -148,7 +148,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(269, 18);
+            this.label5.Location = new System.Drawing.Point(430, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 13;
@@ -156,7 +156,7 @@
             // 
             // txt_raggio
             // 
-            this.txt_raggio.Location = new System.Drawing.Point(365, 11);
+            this.txt_raggio.Location = new System.Drawing.Point(526, 11);
             this.txt_raggio.Margin = new System.Windows.Forms.Padding(2);
             this.txt_raggio.Name = "txt_raggio";
             this.txt_raggio.Size = new System.Drawing.Size(131, 20);
@@ -166,7 +166,7 @@
             // 
             this.cmb_colore.AllowDrop = true;
             this.cmb_colore.FormattingEnabled = true;
-            this.cmb_colore.Location = new System.Drawing.Point(365, 108);
+            this.cmb_colore.Location = new System.Drawing.Point(526, 108);
             this.cmb_colore.Name = "cmb_colore";
             this.cmb_colore.Size = new System.Drawing.Size(131, 21);
             this.cmb_colore.TabIndex = 14;
@@ -174,7 +174,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(271, 112);
+            this.label4.Location = new System.Drawing.Point(432, 112);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 15;
@@ -186,7 +186,7 @@
             this.cmb_esempi.FormattingEnabled = true;
             this.cmb_esempi.Items.AddRange(new object[] {
             "Sistema Sole, Terra e Marte"});
-            this.cmb_esempi.Location = new System.Drawing.Point(276, 236);
+            this.cmb_esempi.Location = new System.Drawing.Point(437, 236);
             this.cmb_esempi.Name = "cmb_esempi";
             this.cmb_esempi.Size = new System.Drawing.Size(220, 21);
             this.cmb_esempi.TabIndex = 16;
@@ -195,7 +195,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(273, 220);
+            this.label6.Location = new System.Drawing.Point(434, 220);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 13);
             this.label6.TabIndex = 17;
@@ -205,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 407);
+            this.ClientSize = new System.Drawing.Size(670, 407);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmb_esempi);
             this.Controls.Add(this.label4);

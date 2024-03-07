@@ -9,28 +9,29 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vettori;
 
 namespace Simulatore_Pianeti
 {
     public partial class Form2 : Form
     {
-        private Planetario planetario = Form1.planetario;
-        private Pianeta pianeta;
-        private Stopwatch cronometro;
-        private int velocita = 60 * 60;
+        Planetario planetario;
+        Pianeta pianeta;
+        Stopwatch cronometro_fps;
+        int velocita;
 
         public Form2()
         {
             InitializeComponent();
-            Inizializza();
+            InitializeVariables();
         }
 
-        private void Inizializza()
+        private void InitializeVariables()
         {
-            cronometro = new Stopwatch();
+            planetario = Form1.planetario;
+            cronometro_fps = new Stopwatch();
+            velocita = 60 * 60;
             planetario.DeltaT = 20;
-            cronometro.Start();
+            cronometro_fps.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -48,12 +49,12 @@ namespace Simulatore_Pianeti
 
             TassoAggiornamento();
 
-            cronometro.Restart();
+            cronometro_fps.Restart();
         }
 
         private void TassoAggiornamento()
         {
-            lbl_fps.Text = (1000 / cronometro.ElapsedMilliseconds).ToString();
+            lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -102,7 +103,7 @@ namespace Simulatore_Pianeti
             if (e.KeyCode == Keys.Right)//avanti 16 tick
             {
                 planetario.DeltaT = 16 * planetario.DeltaT;
-                timer1_Tick(sender, e);
+                timer1_Tick(sender, e);//richiama l'evento tick del timer
                 planetario.DeltaT = planetario.DeltaT / 16;
             }
             if (e.KeyCode == Keys.Left)//indietro 16 tick
@@ -139,6 +140,7 @@ namespace Simulatore_Pianeti
                     pianeta = p;
                 }
             }
+
             if (pianeta != null)
             {
                 label.Text = InformazioniPianeta(pianeta);

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vettori;
 
 namespace Simulatore_Pianeti
 {
@@ -25,34 +24,10 @@ namespace Simulatore_Pianeti
             Posizione = pos;
             Velocità = v;
         }
-        public Pianeta(Color c, double m, Vettore pos, Vettore v)
-        {
-            Colore = c;
-            Raggio = 0;
-            Massa = m;
-            Posizione = pos;
-            Velocità = v;
-        }
-        public Pianeta(double r, double m, Vettore pos, Vettore v)
-        {
-            Colore = Color.White;
-            Raggio = r;
-            Massa = m;
-            Posizione = pos;
-            Velocità = v;
-        }
-        public Pianeta(double m, Vettore pos, Vettore v)
-        {
-            Colore = Color.White;
-            Raggio = 0;
-            Massa = m;
-            Posizione = pos;
-            Velocità = v;
-        }
 
         public override string ToString()
         {
-            return $"Massa: {Massa}; Posizione in.: {Posizione}; Velocità in. {Velocità}";
-        }
+            return string.Format("m: {0}kg; pos.in.: {1}; vel.in.: {2}", Massa.ToString("0.0000E0"), Posizione.ToString("0.0000E0"), Velocità .ToString("0.0000E0"));
+        }//$"Massa: {Massa:0.0000E0}; Posizione in.: {Posizione:0.0000E0}; Velocità in. {Velocità:0.0000E0}"
     }
 }

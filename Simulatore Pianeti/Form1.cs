@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vettori;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Simulatore_Pianeti
 {
@@ -37,19 +35,55 @@ namespace Simulatore_Pianeti
 
         private void Add_Click(object sender, EventArgs e)
         {
-            Pianeta pianeta = new Pianeta(Color.FromName(cmb_colore.SelectedItem.ToString()), double.Parse(txt_raggio.Text), double.Parse(txt_massa.Text), Vettore.Parse(txt_posizione.Text), Vettore.Parse(txt_velocità.Text));
+            double massa;
+            Vettore posizione;
+            Vettore velocità;
+            double raggio;
+            Color colore;
+
+            if (txt_massa.Text != "" && txt_posizione.Text != "" && txt_velocità.Text != "")
+            {
+                massa = double.Parse(txt_massa.Text);
+                posizione = Vettore.Parse(txt_posizione.Text);
+                velocità = Vettore.Parse(txt_velocità.Text);
+            }
+            else
+            {
+                MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale");
+                return;
+            }
+
+            if(txt_raggio.Text != "")
+            {
+                raggio = double.Parse(txt_raggio.Text);
+            }
+            else
+            {
+                raggio = 0;
+            }
+
+            if(cmb_colore.Text != "")
+            {
+                colore = Color.FromName(cmb_colore.SelectedItem.ToString());
+            }
+            else
+            {
+                colore = Color.White;
+            }
+
+            Pianeta pianeta = new Pianeta(colore, raggio, massa, posizione, velocità);
             lst_Pianeti.Items.Add(pianeta);
 
             txt_raggio.Clear();
             txt_posizione.Clear();
             txt_velocità.Clear();
             txt_massa.Clear();
+            cmb_colore.Text = "";
         }
 
         private void Remove_Click(object sender, EventArgs e)
         {
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
-
         }
 
         private void Play_Click(object sender, EventArgs e)
