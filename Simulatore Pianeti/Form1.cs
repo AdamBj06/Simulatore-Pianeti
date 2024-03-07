@@ -14,43 +14,36 @@ namespace Simulatore_Pianeti
 {
     public partial class Form1 : Form
     {
-        public Planetario planetario = new Planetario();
+        public static Planetario planetario;
         public Form1()
         {
             InitializeComponent();
             InitializeColorsComboBox();
+            planetario = new Planetario();
             planetario.Pianeti = new List<Pianeta>();
         }
 
-        private void InitializeColorsComboBox()
+        private void InitializeColorsComboBox()//Carolin
         {
-            Colori.Text = "Scegli un colore";
-
             foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))
             {
                 Color color = Color.FromKnownColor(knownColor);
                 if (!color.IsSystemColor)
                 {
-                    Colori.Items.Add(color.Name);
+                    cmb_colore.Items.Add(color.Name);
                 }
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void Add_Click(object sender, EventArgs e)
         {
-            Pianeta pianeta = new Pianeta(Color.FromName(Colori.SelectedItem.ToString()), double.Parse(Raggio.Text), double.Parse(Massa.Text), Vettore.Parse(vPos.Text), Vettore.Parse(vVel.Text));
-            planetario.Pianeti.Add(pianeta);
+            Pianeta pianeta = new Pianeta(Color.FromName(cmb_colore.SelectedItem.ToString()), double.Parse(txt_raggio.Text), double.Parse(txt_massa.Text), Vettore.Parse(txt_posizione.Text), Vettore.Parse(txt_velocità.Text));
             lst_Pianeti.Items.Add(pianeta);
 
-            Raggio.Clear();
-            vPos.Clear();
-            vVel.Clear();
-            Massa.Clear();
+            txt_raggio.Clear();
+            txt_posizione.Clear();
+            txt_velocità.Clear();
+            txt_massa.Clear();
         }
 
         private void Remove_Click(object sender, EventArgs e)
@@ -61,7 +54,28 @@ namespace Simulatore_Pianeti
 
         private void Play_Click(object sender, EventArgs e)
         {
+            foreach (Pianeta p in lst_Pianeti.Items)
+            {
+                planetario.Pianeti.Add(p);
+            }
 
+            Form2 Form2 = new Form2();
+            this.Visible = false;
+            Form2.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cmb_esempi.SelectedIndex)
+            {
+                case 0:
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8, 2e30, new Vettore(1e9 * (Width / 3), 1e9d * (Height / 2)), new Vettore(0, 0)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6, 6e24, new Vettore(1e9 * (Width / 3) + 1.49597870e11d, 1e9d * (Height / 2)), new Vettore(0, 2.972222e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6, 6.39e23, new Vettore(1e9 * (Width / 3) + 2.28e11d, 1e9d * (Height / 2)), new Vettore(0, 2.413e4d)));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
