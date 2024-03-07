@@ -7,7 +7,7 @@ using Vettori;
 
 namespace Simulatore_Pianeti
 {
-    internal class Planetario
+    public class Planetario
     {
         public const double G = 6.673e-11d;
         public double DeltaT { get; set; }

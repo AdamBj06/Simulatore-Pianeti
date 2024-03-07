@@ -14,11 +14,12 @@ namespace Simulatore_Pianeti
 {
     public partial class Form1 : Form
     {
-        private List<Pianeta> listPianeti = new List<Pianeta>();
+        public Planetario planetario = new Planetario();
         public Form1()
         {
             InitializeComponent();
             InitializeColorsComboBox();
+            planetario.Pianeti = new List<Pianeta>();
         }
 
         private void InitializeColorsComboBox()
@@ -42,10 +43,10 @@ namespace Simulatore_Pianeti
 
         private void Add_Click(object sender, EventArgs e)
         {
-            listPianeti.Add(new Pianeta((Color)Colori.SelectedItem, double.Parse(Raggio.Text), double.Parse(Massa.Text), Vettore.Parse(vPos.Text), Vettore.Parse(vVel.Text)));
-            Pianeti.Items.Add(Nome.Text);
+            Pianeta pianeta = new Pianeta(Color.FromName(Colori.SelectedItem.ToString()), double.Parse(Raggio.Text), double.Parse(Massa.Text), Vettore.Parse(vPos.Text), Vettore.Parse(vVel.Text));
+            planetario.Pianeti.Add(pianeta);
+            lst_Pianeti.Items.Add(pianeta);
 
-            Nome.Clear();
             Raggio.Clear();
             vPos.Clear();
             vVel.Clear();
@@ -54,7 +55,7 @@ namespace Simulatore_Pianeti
 
         private void Remove_Click(object sender, EventArgs e)
         {
-            Pianeti.Items.Remove(Pianeti.SelectedItem);
+            lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
 
         }
 
