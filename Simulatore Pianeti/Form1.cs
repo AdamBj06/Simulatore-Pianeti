@@ -86,12 +86,14 @@ namespace Simulatore_Pianeti
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
         }
 
-        private void Play_Click(object sender, EventArgs e)
+        private async void Play_Click(object sender, EventArgs e)
         {
             foreach (Pianeta p in lst_Pianeti.Items)
             {
                 planetario.Pianeti.Add(p);
             }
+
+            
 
             Form2 Form2 = new Form2();
             this.Visible = false;
