@@ -116,6 +116,7 @@ namespace Simulatore_Pianeti
             }
         }
 
+        #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
         private void txt_posizione_Enter(object sender, EventArgs e)
         {
             inPos = true;
@@ -135,7 +136,7 @@ namespace Simulatore_Pianeti
         {
             inVel = false;
         }
-
+        
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
@@ -173,5 +174,6 @@ namespace Simulatore_Pianeti
                 g.DrawLine(nero, xi, yi, xf, yf);
             }
         }
+        #endregion
     }
 }
