@@ -55,7 +55,7 @@
             this.lst_Pianeti.Location = new System.Drawing.Point(11, 11);
             this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
-            this.lst_Pianeti.Size = new System.Drawing.Size(416, 377);
+            this.lst_Pianeti.Size = new System.Drawing.Size(416, 910);
             this.lst_Pianeti.TabIndex = 1;
             // 
             // btn_play
@@ -110,6 +110,8 @@
             this.txt_posizione.Name = "txt_posizione";
             this.txt_posizione.Size = new System.Drawing.Size(131, 13);
             this.txt_posizione.TabIndex = 4;
+            this.txt_posizione.Enter += new System.EventHandler(this.txt_posizione_Enter);
+            this.txt_posizione.Leave += new System.EventHandler(this.txt_posizione_Leave);
             // 
             // txt_massa
             // 
@@ -132,11 +134,13 @@
             this.txt_velocità.Name = "txt_velocità";
             this.txt_velocità.Size = new System.Drawing.Size(131, 13);
             this.txt_velocità.TabIndex = 6;
+            this.txt_velocità.Enter += new System.EventHandler(this.txt_velocità_Enter);
+            this.txt_velocità.Leave += new System.EventHandler(this.txt_velocità_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(430, 66);
+            this.label1.Location = new System.Drawing.Point(430, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 7;
@@ -145,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(430, 90);
+            this.label2.Location = new System.Drawing.Point(430, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 8;
@@ -154,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(430, 42);
+            this.label3.Location = new System.Drawing.Point(430, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 9;
@@ -163,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(430, 18);
+            this.label5.Location = new System.Drawing.Point(430, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 13;
@@ -195,7 +199,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(432, 112);
+            this.label4.Location = new System.Drawing.Point(432, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 15;
@@ -230,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(670, 407);
+            this.ClientSize = new System.Drawing.Size(1181, 407);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Cmb_esempi);
             this.Controls.Add(this.label4);
@@ -250,6 +254,9 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

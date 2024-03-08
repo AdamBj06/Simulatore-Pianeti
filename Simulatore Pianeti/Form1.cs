@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,9 @@ namespace Simulatore_Pianeti
     public partial class Form1 : Form//da fare: aggiungere legenda per i pulsanti in form1, aggiungere altri esempi, aggiungere pulsante per cambiare da tema scuro a chiaro...;
     {
         public static Planetario planetario;
+        int xi, yi, xf, yf;
+        bool inPos = false, inVel = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -109,6 +113,64 @@ namespace Simulatore_Pianeti
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void txt_posizione_Enter(object sender, EventArgs e)
+        {
+            inPos = true;
+        }
+
+        private void txt_posizione_Leave(object sender, EventArgs e)
+        {
+            inPos = false;
+        }
+
+        private void txt_velocità_Enter(object sender, EventArgs e)
+        {
+            inVel = true;
+        }
+
+        private void txt_velocità_Leave(object sender, EventArgs e)
+        {
+            inVel = false;
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            Brush sfondo = new SolidBrush(BackColor);
+            Pen nero = new Pen(Color.Black, 4);
+            g.FillRectangle(sfondo, 700, 0, Width, Height);
+
+            g.DrawLine(nero, 698, Height - 48, Width - 40, Height - 48);//asse x
+            g.DrawLine(nero, 698, Height - 48, 698, 20);//asse y
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            Brush sfondo = new SolidBrush(BackColor);
+            g.FillRectangle(sfondo, 700, 0, Width, Height - 50);
+
+            xi = e.X; yi = e.Y;
+            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50 && inPos)
+            {
+                txt_posizione.Text = (new Vettore((xi - 750) * 1e9, (380 - yi) * 1e9)).ToString("0.0000E0");
+                g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            Pen nero = new Pen(Color.Black, 3);
+
+            xf = e.X; yf = e.Y;
+            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50 && inVel)
+            {
+                txt_velocità.Text = (new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2)).ToString("0.0000E0");
+                g.DrawLine(nero, xi, yi, xf, yf);
             }
         }
     }
