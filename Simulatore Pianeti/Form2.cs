@@ -83,6 +83,12 @@ namespace Simulatore_Pianeti
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
+            //esci dalla simulazione per tornare al form principale
+            if(e.KeyCode == Keys.Escape)
+            {
+                Owner.Visible = true;
+                Close();
+            }
             //stop/start
             if (e.KeyCode == Keys.Space && timer1.Enabled == true)
             {
@@ -128,9 +134,9 @@ namespace Simulatore_Pianeti
 
         private void Form2_MouseDown(object sender, MouseEventArgs e)
         {
-            Cursor = Cursors.NoMove2D;
             if (e.Button == MouseButtons.Middle)
             {
+                Cursor = Cursors.NoMove2D;
                 mouseX = MousePosition.X;
                 mouseY = MousePosition.Y;
                 mousePressed = true;
@@ -139,9 +145,9 @@ namespace Simulatore_Pianeti
 
         private void Form2_MouseUp(object sender, MouseEventArgs e)
         {
-            Cursor = Cursors.Default;
             if (e.Button == MouseButtons.Middle)
             {
+                Cursor = Cursors.Default;
                 mousePressed = false;
             }
         }

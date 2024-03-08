@@ -85,12 +85,14 @@ namespace Simulatore_Pianeti
 
         private void Btn_Play_Click(object sender, EventArgs e)//Inizia la simulazione
         {
+            planetario.Pianeti.Clear();
             foreach (Pianeta p in lst_Pianeti.Items)
             {
                 planetario.Pianeti.Add(p);
             }
 
             Form2 Form2 = new Form2();
+            Form2.Owner = this;
             this.Visible = false;
             Form2.Show();
         }
