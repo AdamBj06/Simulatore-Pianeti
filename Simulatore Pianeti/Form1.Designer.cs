@@ -48,16 +48,20 @@
             // 
             // lst_Pianeti
             // 
+            this.lst_Pianeti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
+            this.lst_Pianeti.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lst_Pianeti.ForeColor = System.Drawing.Color.White;
             this.lst_Pianeti.FormattingEnabled = true;
-            this.lst_Pianeti.Location = new System.Drawing.Point(9, 11);
+            this.lst_Pianeti.Location = new System.Drawing.Point(11, 11);
             this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
-            this.lst_Pianeti.Size = new System.Drawing.Size(416, 381);
+            this.lst_Pianeti.Size = new System.Drawing.Size(416, 377);
             this.lst_Pianeti.TabIndex = 1;
             // 
             // btn_play
             // 
             this.btn_play.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_play.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_play.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_play.Location = new System.Drawing.Point(589, 142);
             this.btn_play.Margin = new System.Windows.Forms.Padding(2);
@@ -71,6 +75,7 @@
             // btn_add
             // 
             this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.Location = new System.Drawing.Point(433, 142);
             this.btn_add.Margin = new System.Windows.Forms.Padding(2);
@@ -84,6 +89,7 @@
             // btn_remove
             // 
             this.btn_remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btn_remove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_remove.Location = new System.Drawing.Point(505, 142);
             this.btn_remove.Margin = new System.Windows.Forms.Padding(2);
@@ -96,26 +102,35 @@
             // 
             // txt_posizione
             // 
+            this.txt_posizione.BackColor = System.Drawing.Color.White;
+            this.txt_posizione.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_posizione.ForeColor = System.Drawing.Color.Black;
             this.txt_posizione.Location = new System.Drawing.Point(526, 59);
             this.txt_posizione.Margin = new System.Windows.Forms.Padding(2);
             this.txt_posizione.Name = "txt_posizione";
-            this.txt_posizione.Size = new System.Drawing.Size(131, 20);
+            this.txt_posizione.Size = new System.Drawing.Size(131, 13);
             this.txt_posizione.TabIndex = 4;
             // 
             // txt_massa
             // 
+            this.txt_massa.BackColor = System.Drawing.Color.White;
+            this.txt_massa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_massa.ForeColor = System.Drawing.Color.Black;
             this.txt_massa.Location = new System.Drawing.Point(526, 35);
             this.txt_massa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_massa.Name = "txt_massa";
-            this.txt_massa.Size = new System.Drawing.Size(131, 20);
+            this.txt_massa.Size = new System.Drawing.Size(131, 13);
             this.txt_massa.TabIndex = 5;
             // 
             // txt_velocità
             // 
+            this.txt_velocità.BackColor = System.Drawing.Color.White;
+            this.txt_velocità.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_velocità.ForeColor = System.Drawing.Color.Black;
             this.txt_velocità.Location = new System.Drawing.Point(526, 83);
             this.txt_velocità.Margin = new System.Windows.Forms.Padding(2);
             this.txt_velocità.Name = "txt_velocità";
-            this.txt_velocità.Size = new System.Drawing.Size(131, 20);
+            this.txt_velocità.Size = new System.Drawing.Size(131, 13);
             this.txt_velocità.TabIndex = 6;
             // 
             // label1
@@ -156,15 +171,21 @@
             // 
             // txt_raggio
             // 
+            this.txt_raggio.BackColor = System.Drawing.Color.White;
+            this.txt_raggio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_raggio.ForeColor = System.Drawing.Color.Black;
             this.txt_raggio.Location = new System.Drawing.Point(526, 11);
             this.txt_raggio.Margin = new System.Windows.Forms.Padding(2);
             this.txt_raggio.Name = "txt_raggio";
-            this.txt_raggio.Size = new System.Drawing.Size(131, 20);
+            this.txt_raggio.Size = new System.Drawing.Size(131, 13);
             this.txt_raggio.TabIndex = 12;
             // 
             // cmb_colore
             // 
             this.cmb_colore.AllowDrop = true;
+            this.cmb_colore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
+            this.cmb_colore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_colore.ForeColor = System.Drawing.Color.White;
             this.cmb_colore.FormattingEnabled = true;
             this.cmb_colore.Location = new System.Drawing.Point(526, 108);
             this.cmb_colore.Name = "cmb_colore";
@@ -183,6 +204,9 @@
             // cmb_esempi
             // 
             this.cmb_esempi.AllowDrop = true;
+            this.cmb_esempi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
+            this.cmb_esempi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_esempi.ForeColor = System.Drawing.Color.White;
             this.cmb_esempi.FormattingEnabled = true;
             this.cmb_esempi.Items.AddRange(new object[] {
             "Sistema Sole, Terra e Marte"});
@@ -205,6 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(670, 407);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmb_esempi);
@@ -222,6 +247,7 @@
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.lst_Pianeti);
             this.Controls.Add(this.btn_play);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
