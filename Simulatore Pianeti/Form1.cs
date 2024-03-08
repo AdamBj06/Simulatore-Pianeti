@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Simulatore_Pianeti
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form//da fare: aggiungere legenda per i pulsanti in form1, aggiungere altri esempi, aggiungere pulsante per cambiare da tema scuro a chiaro...;
     {
         public static Planetario planetario;
         public Form1()
