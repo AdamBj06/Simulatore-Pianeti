@@ -18,6 +18,8 @@ namespace Simulatore_Pianeti
         public Pianeta pianeta;
         public Stopwatch cronometro_fps;
         public int velocita;
+        public bool mousePressed;
+        public int mouseX, mouseY, mouseX2, mouseY2;
 
         public Form2()
         {
@@ -50,6 +52,20 @@ namespace Simulatore_Pianeti
 
             lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString();
             cronometro_fps.Restart();
+
+
+            mouseX2 = MousePosition.X - mouseX;
+            mouseY2 = mouseY - MousePosition.Y;
+            if (mousePressed)
+            {
+                foreach(Pianeta p in planetario.Pianeti)
+                {
+                    p.Posizione.X += 4e8d * mouseX2;
+                    p.Posizione.Y += 4e8d * mouseY2;
+                }
+                mouseX = MousePosition.X;
+                mouseY = MousePosition.Y;
+            }
         }
 
         private void Form2_Paint(object sender, PaintEventArgs e)
@@ -115,6 +131,26 @@ namespace Simulatore_Pianeti
                 planetario.DeltaT = -planetario.DeltaT;
                 timer1_Tick(sender, e);
                 planetario.DeltaT = -planetario.DeltaT;
+            }
+        }
+
+        private void Form2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.NoMove2D;
+            if (e.Button == MouseButtons.Middle)
+            {
+                mouseX = MousePosition.X;
+                mouseY = MousePosition.Y;
+                mousePressed = true;
+            }
+        }
+
+        private void Form2_MouseUp(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Default;
+            if (e.Button == MouseButtons.Middle)
+            {
+                mousePressed = false;
             }
         }
 

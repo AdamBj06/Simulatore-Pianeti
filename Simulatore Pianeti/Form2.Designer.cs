@@ -72,6 +72,8 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form2_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
