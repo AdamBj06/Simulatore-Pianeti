@@ -42,7 +42,7 @@
             this.txt_raggio = new System.Windows.Forms.TextBox();
             this.cmb_colore = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmb_esempi = new System.Windows.Forms.ComboBox();
+            this.Cmb_esempi = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             this.btn_play.TabIndex = 0;
             this.btn_play.Text = "Play";
             this.btn_play.UseVisualStyleBackColor = false;
-            this.btn_play.Click += new System.EventHandler(this.Play_Click);
+            this.btn_play.Click += new System.EventHandler(this.Btn_Play_Click);
             // 
             // btn_add
             // 
@@ -84,7 +84,7 @@
             this.btn_add.TabIndex = 2;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.Add_Click);
+            this.btn_add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
             // btn_remove
             // 
@@ -98,7 +98,7 @@
             this.btn_remove.TabIndex = 3;
             this.btn_remove.Text = "Remove";
             this.btn_remove.UseVisualStyleBackColor = false;
-            this.btn_remove.Click += new System.EventHandler(this.Remove_Click);
+            this.btn_remove.Click += new System.EventHandler(this.Btn_Remove_Click);
             // 
             // txt_posizione
             // 
@@ -201,20 +201,20 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Colore";
             // 
-            // cmb_esempi
+            // Cmb_esempi
             // 
-            this.cmb_esempi.AllowDrop = true;
-            this.cmb_esempi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
-            this.cmb_esempi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_esempi.ForeColor = System.Drawing.Color.White;
-            this.cmb_esempi.FormattingEnabled = true;
-            this.cmb_esempi.Items.AddRange(new object[] {
+            this.Cmb_esempi.AllowDrop = true;
+            this.Cmb_esempi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
+            this.Cmb_esempi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb_esempi.ForeColor = System.Drawing.Color.White;
+            this.Cmb_esempi.FormattingEnabled = true;
+            this.Cmb_esempi.Items.AddRange(new object[] {
             "Sistema Sole, Terra e Marte"});
-            this.cmb_esempi.Location = new System.Drawing.Point(437, 236);
-            this.cmb_esempi.Name = "cmb_esempi";
-            this.cmb_esempi.Size = new System.Drawing.Size(220, 21);
-            this.cmb_esempi.TabIndex = 16;
-            this.cmb_esempi.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Cmb_esempi.Location = new System.Drawing.Point(437, 236);
+            this.Cmb_esempi.Name = "Cmb_esempi";
+            this.Cmb_esempi.Size = new System.Drawing.Size(220, 21);
+            this.Cmb_esempi.TabIndex = 16;
+            this.Cmb_esempi.SelectedIndexChanged += new System.EventHandler(this.Cmb_esempi_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -232,7 +232,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(670, 407);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cmb_esempi);
+            this.Controls.Add(this.Cmb_esempi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmb_colore);
             this.Controls.Add(this.label5);
@@ -270,7 +270,7 @@
         private System.Windows.Forms.TextBox txt_raggio;
         private System.Windows.Forms.ComboBox cmb_colore;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmb_esempi;
+        private System.Windows.Forms.ComboBox Cmb_esempi;
         private System.Windows.Forms.Label label6;
     }
 }

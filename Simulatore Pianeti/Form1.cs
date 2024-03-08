@@ -33,7 +33,7 @@ namespace Simulatore_Pianeti
             }
         }
 
-        private void Add_Click(object sender, EventArgs e)
+        private void Btn_Add_Click(object sender, EventArgs e)
         {
             double massa;
             Vettore posizione;
@@ -81,12 +81,12 @@ namespace Simulatore_Pianeti
             cmb_colore.Text = "";
         }
 
-        private void Remove_Click(object sender, EventArgs e)
+        private void Btn_Remove_Click(object sender, EventArgs e)
         {
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
         }
 
-        private void Play_Click(object sender, EventArgs e)
+        private void Btn_Play_Click(object sender, EventArgs e)
         {
             foreach (Pianeta p in lst_Pianeti.Items)
             {
@@ -98,9 +98,9 @@ namespace Simulatore_Pianeti
             Form2.Show();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(cmb_esempi.SelectedIndex)
+            switch (Cmb_esempi.SelectedIndex)
             {
                 case 0:
                     lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
