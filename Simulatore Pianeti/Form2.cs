@@ -14,28 +14,20 @@ namespace Simulatore_Pianeti
 {
     public partial class Form2 : Form
     {
-        public Planetario planetario;
-        public Pianeta pianeta;
-        public Stopwatch cronometro_fps;
-        public int velocita;
-        public bool mousePressed;
-        public int mouseX, mouseY, mouseX2, mouseY2;
+        public Planetario planetario = Form1.planetario;
+        public Stopwatch cronometro_fps = new Stopwatch();
+        public int velocita = 3600;
 
         public Form2()
         {
             InitializeComponent();
-            InitializeVariables();
-        }
-
-        private void InitializeVariables()
-        {
-            planetario = Form1.planetario;
-            cronometro_fps = new Stopwatch();
-            velocita = 60 * 60;
             planetario.DeltaT = 20d;
             cronometro_fps.Start();
         }
 
+        public Pianeta pianeta;
+        public bool mousePressed;
+        public int mouseX, mouseY, mouseX2, mouseY2;
         private void timer1_Tick(object sender, EventArgs e)
         {
             for (int x = 0; x <= velocita; x++)
@@ -71,7 +63,7 @@ namespace Simulatore_Pianeti
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
-            foreach (Pianeta p in planetario.Pianeti)
+            foreach (Pianeta p in planetario.Pianeti)//disegna tutti i pianeti/stelle
             {
                 if (p.Raggio > 8e7d)
                 {
@@ -158,9 +150,9 @@ namespace Simulatore_Pianeti
         {
             foreach (Pianeta p in planetario.Pianeti)
             {
-                int xc = (int)Math.Round(p.Posizione.X / 1e9d);
-                int yc = Height - (int)Math.Round(p.Posizione.Y / 1e9d);
-                int r = (int)(p.Raggio / 1e7d);
+                int xc = (int)Math.Round(p.Posizione.X / 1e9d);//centro del cerchio/pianeta
+                int yc = Height - (int)Math.Round(p.Posizione.Y / 1e9d);//centro del cerchio/pianeta
+                int r = (int)(p.Raggio / 1e7d);//raggio del cerchio/pianeta
                 if (p.Raggio > 8e7d && DentroCerchio(xc, yc, r, e.X, e.Y))
                 {
                     pianeta = p;
@@ -178,12 +170,12 @@ namespace Simulatore_Pianeti
         }
 
         public string InformazioniPianeta(Pianeta p)
-        {
+        {//(per adam) guardare Iformattable
             return string.Format("Pianeta: {0}\nMassa: {1}\nPosizione: {2}\nVelocità: {3}\nRaggio: {4}",
                                  p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
         }
 
-        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)
+        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)//controlla se la posizione (x;y) è dentro il cerchio
         {
             int dx = xc - x;
             int dy = yc - y;

@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Cmb_esempi = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btn_tema = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lst_Pianeti
@@ -229,12 +230,25 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Esempi preimpostati:";
             // 
+            // btn_tema
+            // 
+            this.btn_tema.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
+            this.btn_tema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tema.Location = new System.Drawing.Point(435, 276);
+            this.btn_tema.Name = "btn_tema";
+            this.btn_tema.Size = new System.Drawing.Size(83, 23);
+            this.btn_tema.TabIndex = 18;
+            this.btn_tema.Text = "Tema chiaro";
+            this.btn_tema.UseVisualStyleBackColor = false;
+            this.btn_tema.Click += new System.EventHandler(this.btn_tema_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(1181, 407);
+            this.ClientSize = new System.Drawing.Size(1173, 454);
+            this.Controls.Add(this.btn_tema);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Cmb_esempi);
             this.Controls.Add(this.label4);
@@ -279,6 +293,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox Cmb_esempi;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_tema;
     }
 }
 

@@ -8,24 +8,26 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Simulatore_Pianeti
 {
-    public partial class Form1 : Form//da fare: aggiungere legenda per i pulsanti in form1, aggiungere altri esempi, aggiungere pulsante per cambiare da tema scuro a chiaro...;
-    {
-        public static Planetario planetario;
-        int xi, yi, xf, yf;
-        bool inPos = false, inVel = false;
+    public partial class Form1 : Form
+    {   /*da fare: 
+         * aggiungere legenda per i pulsanti in form1, 
+         * aggiungere altri esempi...
+         * */
+        public static Planetario planetario = new Planetario();
 
         public Form1()
         {
             InitializeComponent();
             InitializeColorsComboBox();
-            planetario = new Planetario();
+
             planetario.Pianeti = new List<Pianeta>();
         }
 
-        private void InitializeColorsComboBox()//Carolin
+        private void InitializeColorsComboBox()//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema
         {
             foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))
             {
@@ -45,33 +47,24 @@ namespace Simulatore_Pianeti
             double raggio;
             Color colore;
 
-            if (txt_massa.Text != "" && txt_posizione.Text != "" && txt_velocità.Text != "")
-            {
+            if (txt_massa.Text != "" && txt_posizione.Text != "" && txt_velocità.Text != "") {
                 massa = double.Parse(txt_massa.Text);
                 posizione = Vettore.Parse(txt_posizione.Text);
                 velocità = Vettore.Parse(txt_velocità.Text);
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale");
                 return;
             }
 
-            if(txt_raggio.Text != "")
-            {
+            if(txt_raggio.Text != "") {
                 raggio = double.Parse(txt_raggio.Text);
-            }
-            else
-            {
+            } else {
                 raggio = 0;
             }
 
-            if(cmb_colore.Text != "")
-            {
+            if(cmb_colore.Text != "") {
                 colore = Color.FromName(cmb_colore.SelectedItem.ToString());
-            }
-            else
-            {
+            } else {
                 colore = Color.White;
             }
 
@@ -90,7 +83,7 @@ namespace Simulatore_Pianeti
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
         }
 
-        private void Btn_Play_Click(object sender, EventArgs e)
+        private void Btn_Play_Click(object sender, EventArgs e)//Inizia la simulazione
         {
             foreach (Pianeta p in lst_Pianeti.Items)
             {
@@ -102,7 +95,7 @@ namespace Simulatore_Pianeti
             Form2.Show();
         }
 
-        private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//Esempi preimpostati
         {
             switch (Cmb_esempi.SelectedIndex)
             {
@@ -116,7 +109,68 @@ namespace Simulatore_Pianeti
             }
         }
 
+        bool TemaScuro = true;
+        private void btn_tema_Click(object sender, EventArgs e)
+        {
+            if (TemaScuro)
+            {
+                btn_tema.Text = "Tema scuro";
+
+                BackColor = SystemColors.Control;
+                btn_tema.BackColor = SystemColors.Control;
+                btn_tema.ForeColor = SystemColors.ControlText;
+                foreach (Control control in Controls)
+                {
+                    if(!(control is Button) && !(control is Label))
+                    {
+                        control.BackColor = SystemColors.Window;
+                        control.ForeColor = SystemColors.ControlText;
+                    }
+                    else if(control is Label)
+                    {
+                        control.BackColor = SystemColors.Control;
+                        control.ForeColor = SystemColors.ControlText;
+                    }
+                }
+
+                lst_Pianeti.BorderStyle = BorderStyle.Fixed3D;
+                txt_raggio.BorderStyle = BorderStyle.Fixed3D;
+                txt_posizione.BorderStyle = BorderStyle.Fixed3D;
+                txt_velocità.BorderStyle = BorderStyle.Fixed3D;
+                txt_massa.BorderStyle = BorderStyle.Fixed3D;
+
+                TemaScuro = false;
+            }
+            else
+            {
+                btn_tema.Text = "Tema chiaro";
+
+                BackColor = Color.FromArgb(21, 32, 43);
+                btn_tema.BackColor = Color.FromArgb(25, 39, 52);
+                btn_tema.ForeColor = Color.White;
+                foreach (Control control in Controls)
+                {
+                    if (!(control is Button) && !(control is TextBox))
+                    {
+                        control.BackColor = Color.FromArgb(25, 39, 52);
+                        control.ForeColor = Color.White;
+                    }
+                }
+
+                lst_Pianeti.BorderStyle = BorderStyle.None;
+                txt_raggio.BorderStyle = BorderStyle.None;
+                txt_posizione.BorderStyle = BorderStyle.None;
+                txt_velocità.BorderStyle = BorderStyle.None;
+                txt_massa.BorderStyle = BorderStyle.None;
+
+                TemaScuro = true;
+            }
+        }
+
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
+        int xi, yi, xf, yf;
+        bool inPos = false, inVel = false;
+
         private void txt_posizione_Enter(object sender, EventArgs e)
         {
             inPos = true;

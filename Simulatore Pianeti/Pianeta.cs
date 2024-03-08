@@ -16,6 +16,7 @@ namespace Simulatore_Pianeti
         public Vettore Velocità { get; set; }
         public Vettore Forza { get; set; }//che agisce sul corpo
         public Vettore Accelerazione { get; set; }
+
         public Pianeta(Color c, double r, double m, Vettore pos, Vettore v)
         {
             Colore = c;
@@ -25,7 +26,7 @@ namespace Simulatore_Pianeti
             Velocità = v;
         }
 
-        public override string ToString()
+        public override string ToString()//(per adam) guardare Iformattable
         {
             return string.Format("m: {0}kg; pos.in.: {1}; vel.in.: {2}", Massa.ToString("0.0000E0"), Posizione.ToString("0.0000E0"), Velocità .ToString("0.0000E0"));
         }//$"Massa: {Massa:0.0000E0}; Posizione in.: {Posizione:0.0000E0}; Velocità in. {Velocità:0.0000E0}"

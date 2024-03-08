@@ -22,13 +22,13 @@ namespace Simulatore_Pianeti
                     if (p != p2)
                     {
                         Vettore r = p2.Posizione - p.Posizione;
-                        p.Forza += G * p.Massa * p2.Massa / (r.Modulo() * r.Modulo()) * r.Versore();
+                        p.Forza += G * p.Massa * p2.Massa / (r.Modulo() * r.Modulo()) * r.Versore();//forza gravitazionale
                     }
                 }
 
                 p.Accelerazione = p.Forza / p.Massa;
+                p.Posizione += p.Velocità * DeltaT + 0.5d * p.Accelerazione * (DeltaT * DeltaT);//legge oraria del moto uniformemente accelerato
                 p.Velocità += p.Accelerazione * DeltaT;
-                p.Posizione += p.Velocità * DeltaT + 0.5d * p.Accelerazione * (DeltaT * DeltaT);
             }
         }
     }
