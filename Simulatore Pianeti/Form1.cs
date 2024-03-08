@@ -99,6 +99,7 @@ namespace Simulatore_Pianeti
 
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//Esempi preimpostati
         {
+            lst_Pianeti.Items.Clear();
             switch (Cmb_esempi.SelectedIndex)
             {
                 case 0:
