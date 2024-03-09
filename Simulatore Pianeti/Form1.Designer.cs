@@ -104,12 +104,11 @@
             // txt_posizione
             // 
             this.txt_posizione.BackColor = System.Drawing.Color.White;
-            this.txt_posizione.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_posizione.ForeColor = System.Drawing.Color.Black;
             this.txt_posizione.Location = new System.Drawing.Point(526, 59);
             this.txt_posizione.Margin = new System.Windows.Forms.Padding(2);
             this.txt_posizione.Name = "txt_posizione";
-            this.txt_posizione.Size = new System.Drawing.Size(131, 13);
+            this.txt_posizione.Size = new System.Drawing.Size(131, 20);
             this.txt_posizione.TabIndex = 4;
             this.txt_posizione.Enter += new System.EventHandler(this.txt_posizione_Enter);
             this.txt_posizione.Leave += new System.EventHandler(this.txt_posizione_Leave);
@@ -117,23 +116,21 @@
             // txt_massa
             // 
             this.txt_massa.BackColor = System.Drawing.Color.White;
-            this.txt_massa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_massa.ForeColor = System.Drawing.Color.Black;
             this.txt_massa.Location = new System.Drawing.Point(526, 35);
             this.txt_massa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_massa.Name = "txt_massa";
-            this.txt_massa.Size = new System.Drawing.Size(131, 13);
+            this.txt_massa.Size = new System.Drawing.Size(131, 20);
             this.txt_massa.TabIndex = 5;
             // 
             // txt_velocità
             // 
             this.txt_velocità.BackColor = System.Drawing.Color.White;
-            this.txt_velocità.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_velocità.ForeColor = System.Drawing.Color.Black;
             this.txt_velocità.Location = new System.Drawing.Point(526, 83);
             this.txt_velocità.Margin = new System.Windows.Forms.Padding(2);
             this.txt_velocità.Name = "txt_velocità";
-            this.txt_velocità.Size = new System.Drawing.Size(131, 13);
+            this.txt_velocità.Size = new System.Drawing.Size(131, 20);
             this.txt_velocità.TabIndex = 6;
             this.txt_velocità.Enter += new System.EventHandler(this.txt_velocità_Enter);
             this.txt_velocità.Leave += new System.EventHandler(this.txt_velocità_Leave);
@@ -177,12 +174,11 @@
             // txt_raggio
             // 
             this.txt_raggio.BackColor = System.Drawing.Color.White;
-            this.txt_raggio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_raggio.ForeColor = System.Drawing.Color.Black;
             this.txt_raggio.Location = new System.Drawing.Point(526, 11);
             this.txt_raggio.Margin = new System.Windows.Forms.Padding(2);
             this.txt_raggio.Name = "txt_raggio";
-            this.txt_raggio.Size = new System.Drawing.Size(131, 13);
+            this.txt_raggio.Size = new System.Drawing.Size(131, 20);
             this.txt_raggio.TabIndex = 12;
             // 
             // cmb_colore
@@ -213,8 +209,6 @@
             this.Cmb_esempi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cmb_esempi.ForeColor = System.Drawing.Color.White;
             this.Cmb_esempi.FormattingEnabled = true;
-            this.Cmb_esempi.Items.AddRange(new object[] {
-            "Sistema Sole, Terra e Marte"});
             this.Cmb_esempi.Location = new System.Drawing.Point(437, 236);
             this.Cmb_esempi.Name = "Cmb_esempi";
             this.Cmb_esempi.Size = new System.Drawing.Size(220, 21);

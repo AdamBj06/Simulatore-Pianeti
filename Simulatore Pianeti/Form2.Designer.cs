@@ -32,6 +32,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label = new System.Windows.Forms.Label();
             this.lbl_fps = new System.Windows.Forms.Label();
+            this.trackBar_speed = new System.Windows.Forms.TrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_speed)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -52,11 +54,24 @@
             // lbl_fps
             // 
             this.lbl_fps.AutoSize = true;
-            this.lbl_fps.Location = new System.Drawing.Point(1066, 9);
+            this.lbl_fps.Location = new System.Drawing.Point(1076, 9);
             this.lbl_fps.Name = "lbl_fps";
             this.lbl_fps.Size = new System.Drawing.Size(25, 13);
             this.lbl_fps.TabIndex = 1;
             this.lbl_fps.Text = "000";
+            // 
+            // trackBar_speed
+            // 
+            this.trackBar_speed.Enabled = false;
+            this.trackBar_speed.Location = new System.Drawing.Point(896, 619);
+            this.trackBar_speed.Maximum = 200;
+            this.trackBar_speed.Minimum = -200;
+            this.trackBar_speed.Name = "trackBar_speed";
+            this.trackBar_speed.Size = new System.Drawing.Size(215, 45);
+            this.trackBar_speed.TabIndex = 2;
+            this.trackBar_speed.TickFrequency = 10;
+            this.trackBar_speed.Value = 20;
+            this.trackBar_speed.Scroll += new System.EventHandler(this.trackBar_speed_Scroll);
             // 
             // Form2
             // 
@@ -64,6 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1113, 666);
+            this.Controls.Add(this.trackBar_speed);
             this.Controls.Add(this.lbl_fps);
             this.Controls.Add(this.label);
             this.ForeColor = System.Drawing.Color.White;
@@ -74,6 +90,7 @@
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseDown);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_speed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,5 +101,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label lbl_fps;
+        private System.Windows.Forms.TrackBar trackBar_speed;
     }
 }

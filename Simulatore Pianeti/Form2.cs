@@ -62,6 +62,9 @@ namespace Simulatore_Pianeti
 
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
+            lbl_fps.Location = new Point(Width - lbl_fps.Width - 20, 10);
+            trackBar_speed.Location = new Point(ClientSize.Width - trackBar_speed.Width, ClientSize.Height - trackBar_speed.Height);
+
             Graphics g = CreateGraphics();
             foreach (Pianeta p in planetario.Pianeti)//disegna tutti i pianeti/stelle
             {
@@ -98,7 +101,7 @@ namespace Simulatore_Pianeti
             {
                 timer1.Enabled = true;
             }
-            //regola la velocità
+            /*//regola la velocità
             if (e.KeyCode == Keys.OemMinus)//[-]
             {
                 planetario.DeltaT--;
@@ -106,7 +109,7 @@ namespace Simulatore_Pianeti
             if (e.KeyCode == Keys.Oemplus)//[+]
             {
                 planetario.DeltaT++;
-            }
+            }*/
             //skip
             if (e.KeyCode == Keys.Right)//avanti 16 tick
             {
@@ -132,6 +135,7 @@ namespace Simulatore_Pianeti
             }
         }
 
+        #region Movimento nel form
         private void Form2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
@@ -151,9 +155,24 @@ namespace Simulatore_Pianeti
                 mousePressed = false;
             }
         }
+        #endregion
+
+        private void trackBar_speed_Scroll(object sender, EventArgs e)//velocità della simulazione
+        {
+            planetario.DeltaT = trackBar_speed.Value;
+        }
 
         private void Form2_MouseClick(object sender, MouseEventArgs e)
         {
+            if(e.X > trackBar_speed.Location.X && e.Y > trackBar_speed.Location.Y) 
+            { 
+                trackBar_speed.Enabled = true;
+            }
+            else
+            {
+                trackBar_speed.Enabled = false;
+            }
+
             foreach (Pianeta p in planetario.Pianeti)
             {
                 int xc = (int)Math.Round(p.Posizione.X / 1e9d);//centro del cerchio/pianeta

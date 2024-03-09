@@ -22,14 +22,14 @@ namespace Simulatore_Pianeti
         public Form1()
         {
             InitializeComponent();
-            InitializeColorsComboBox();
+            InitializeComboBoxes();
 
             planetario.Pianeti = new List<Pianeta>();
         }
 
-        private void InitializeColorsComboBox()//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema
+        private void InitializeComboBoxes()
         {
-            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))
+            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema
             {
                 Color color = Color.FromKnownColor(knownColor);
                 if (!color.IsSystemColor)
@@ -37,6 +37,9 @@ namespace Simulatore_Pianeti
                     cmb_colore.Items.Add(color.Name);
                 }
             }
+
+            Cmb_esempi.Items.Add("Sistema Sole e Terra");
+            Cmb_esempi.Items.Add("Sistema Sole, Terra e Marte");
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
@@ -102,7 +105,11 @@ namespace Simulatore_Pianeti
             lst_Pianeti.Items.Clear();
             switch (Cmb_esempi.SelectedIndex)
             {
-                case 0:
+                case 0://Sistema Sole e Terra
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.49597870e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
+                    break;
+                case 1://Sistema Sole, Terra e Marte
                     lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
                     lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.49597870e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
                     lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(1e9d * 453.3d + 2.28e11d, 1e9d * 382.5d), new Vettore(0d, 2.413e4d)));
@@ -136,12 +143,6 @@ namespace Simulatore_Pianeti
                     }
                 }
 
-                lst_Pianeti.BorderStyle = BorderStyle.Fixed3D;
-                txt_raggio.BorderStyle = BorderStyle.Fixed3D;
-                txt_posizione.BorderStyle = BorderStyle.Fixed3D;
-                txt_velocità.BorderStyle = BorderStyle.Fixed3D;
-                txt_massa.BorderStyle = BorderStyle.Fixed3D;
-
                 TemaScuro = false;
             }
             else
@@ -159,12 +160,6 @@ namespace Simulatore_Pianeti
                         control.ForeColor = Color.White;
                     }
                 }
-
-                lst_Pianeti.BorderStyle = BorderStyle.None;
-                txt_raggio.BorderStyle = BorderStyle.None;
-                txt_posizione.BorderStyle = BorderStyle.None;
-                txt_velocità.BorderStyle = BorderStyle.None;
-                txt_massa.BorderStyle = BorderStyle.None;
 
                 TemaScuro = true;
             }
