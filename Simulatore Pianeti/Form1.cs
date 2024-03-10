@@ -96,7 +96,7 @@ namespace Simulatore_Pianeti
             }
 
             Form2 Form2 = new Form2();
-            Form2.Owner = this;
+            Form2.Owner = this; 
             this.Visible = false;
             Form2.Show();
         }
