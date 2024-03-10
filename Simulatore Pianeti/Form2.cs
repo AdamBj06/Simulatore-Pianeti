@@ -86,11 +86,6 @@ namespace Simulatore_Pianeti
             }
         }
 
-        private void btn_mostrascia_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             //esci dalla simulazione per tornare al form principale
