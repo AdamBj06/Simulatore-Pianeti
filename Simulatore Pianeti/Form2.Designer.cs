@@ -33,7 +33,6 @@
             this.label = new System.Windows.Forms.Label();
             this.lbl_fps = new System.Windows.Forms.Label();
             this.trackBar_speed = new System.Windows.Forms.TrackBar();
-            this.btn_mostrascia = new System.Windows.Forms.Button();
             this.lbl_speed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_speed)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +57,9 @@
             this.lbl_fps.AutoSize = true;
             this.lbl_fps.Location = new System.Drawing.Point(1027, 9);
             this.lbl_fps.Name = "lbl_fps";
-            this.lbl_fps.Size = new System.Drawing.Size(84, 13);
+            this.lbl_fps.Size = new System.Drawing.Size(39, 13);
             this.lbl_fps.TabIndex = 1;
-            this.lbl_fps.Text = "000fps; 40tick/s";
+            this.lbl_fps.Text = "000fps";
             // 
             // trackBar_speed
             // 
@@ -74,17 +73,6 @@
             this.trackBar_speed.TickFrequency = 10;
             this.trackBar_speed.Value = 20;
             this.trackBar_speed.Scroll += new System.EventHandler(this.trackBar_speed_Scroll);
-            // 
-            // btn_mostrascia
-            // 
-            this.btn_mostrascia.ForeColor = System.Drawing.Color.Black;
-            this.btn_mostrascia.Location = new System.Drawing.Point(12, 631);
-            this.btn_mostrascia.Name = "btn_mostrascia";
-            this.btn_mostrascia.Size = new System.Drawing.Size(75, 23);
-            this.btn_mostrascia.TabIndex = 3;
-            this.btn_mostrascia.Text = "Mostra scia";
-            this.btn_mostrascia.UseVisualStyleBackColor = true;
-            this.btn_mostrascia.Click += new System.EventHandler(this.btn_mostrascia_Click);
             // 
             // lbl_speed
             // 
@@ -102,7 +90,6 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1113, 666);
             this.Controls.Add(this.lbl_speed);
-            this.Controls.Add(this.btn_mostrascia);
             this.Controls.Add(this.trackBar_speed);
             this.Controls.Add(this.lbl_fps);
             this.Controls.Add(this.label);
@@ -126,7 +113,6 @@
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label lbl_fps;
         private System.Windows.Forms.TrackBar trackBar_speed;
-        private System.Windows.Forms.Button btn_mostrascia;
         private System.Windows.Forms.Label lbl_speed;
     }
 }
