@@ -108,11 +108,11 @@ namespace Simulatore_Pianeti
             {
                 case 0://Sistema Sole e Terra
                     lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.49597870e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.52097701e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
                     break;
                 case 1://Sistema Sole, Terra e Marte
                     lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.49597870e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.52097701e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
                     lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(1e9d * 453.3d + 2.28e11d, 1e9d * 382.5d), new Vettore(0d, 2.413e4d)));
                     break;
                 default:

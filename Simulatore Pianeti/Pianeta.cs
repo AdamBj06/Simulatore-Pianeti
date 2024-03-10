@@ -10,10 +10,10 @@ namespace Simulatore_Pianeti
     public class Pianeta
     {
         public Color Colore { get; set; }
-        public double Massa { get; set; }
-        public double Raggio { get; set; }
-        public Vettore Posizione { get; set; }
-        public Vettore Velocità { get; set; }
+        public double Massa { get; set; }//in kilogrammi
+        public double Raggio { get; set; }//in metri
+        public Vettore Posizione { get; set; }//in metri
+        public Vettore Velocità { get; set; }//in metri al secondo
         public Vettore Forza { get; set; }//che agisce sul corpo
         public Vettore Accelerazione { get; set; }
 

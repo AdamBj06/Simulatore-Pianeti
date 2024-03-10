@@ -42,7 +42,7 @@ namespace Simulatore_Pianeti
                 label.Text = InformazioniPianeta(pianeta);
             }
 
-            lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString() + "fps; 40tick/s";
+            lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString();
             cronometro_fps.Restart();
 
 
@@ -66,7 +66,6 @@ namespace Simulatore_Pianeti
             trackBar_speed.Location = new Point(ClientSize.Width - trackBar_speed.Width, ClientSize.Height - trackBar_speed.Height);
             lbl_speed.Location = new Point(ClientSize.Width - lbl_speed.Width -20, trackBar_speed.Location.Y - lbl_speed.Height - 4);
             lbl_fps.Location = new Point(Width - lbl_fps.Width - 20, 10);
-            btn_mostrascia.Location = new Point(12, ClientSize.Height - btn_mostrascia.Height - 10);
 
             Graphics g = CreateGraphics();
             foreach (Pianeta p in planetario.Pianeti)//disegna tutti i pianeti/stelle
@@ -84,18 +83,6 @@ namespace Simulatore_Pianeti
                     float y = Height - (float)Math.Round(p.Posizione.Y / 1e9d);
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, 8, 8);
                 }
-            }
-        }
-
-        private void btn_mostrascia_Click(object sender, EventArgs e)
-        {
-            if (mostrascia == true)
-            {
-                mostrascia = false;
-            }
-            else
-            {
-                mostrascia = true;
             }
         }
 
