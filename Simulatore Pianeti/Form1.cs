@@ -99,7 +99,7 @@ namespace Simulatore_Pianeti
 
             btn_play.Text = "Resume";
             Form2 Form2 = new Form2();
-            Form2.Owner = this;
+            Form2.Owner = this; 
             this.Visible = false;
             Form2.Show();
         }
