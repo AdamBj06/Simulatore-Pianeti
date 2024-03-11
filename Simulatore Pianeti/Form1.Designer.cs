@@ -58,6 +58,7 @@
             this.lst_Pianeti.Name = "lst_Pianeti";
             this.lst_Pianeti.Size = new System.Drawing.Size(416, 910);
             this.lst_Pianeti.TabIndex = 1;
+            this.lst_Pianeti.SelectedIndexChanged += new System.EventHandler(this.lst_Pianeti_SelectedIndexChanged);
             // 
             // btn_play
             // 
@@ -67,7 +68,7 @@
             this.btn_play.Location = new System.Drawing.Point(589, 142);
             this.btn_play.Margin = new System.Windows.Forms.Padding(2);
             this.btn_play.Name = "btn_play";
-            this.btn_play.Size = new System.Drawing.Size(68, 68);
+            this.btn_play.Size = new System.Drawing.Size(83, 68);
             this.btn_play.TabIndex = 0;
             this.btn_play.Text = "Play";
             this.btn_play.UseVisualStyleBackColor = false;
@@ -108,7 +109,7 @@
             this.txt_posizione.Location = new System.Drawing.Point(526, 59);
             this.txt_posizione.Margin = new System.Windows.Forms.Padding(2);
             this.txt_posizione.Name = "txt_posizione";
-            this.txt_posizione.Size = new System.Drawing.Size(131, 20);
+            this.txt_posizione.Size = new System.Drawing.Size(146, 20);
             this.txt_posizione.TabIndex = 4;
             this.txt_posizione.Enter += new System.EventHandler(this.txt_posizione_Enter);
             this.txt_posizione.Leave += new System.EventHandler(this.txt_posizione_Leave);
@@ -120,7 +121,7 @@
             this.txt_massa.Location = new System.Drawing.Point(526, 35);
             this.txt_massa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_massa.Name = "txt_massa";
-            this.txt_massa.Size = new System.Drawing.Size(131, 20);
+            this.txt_massa.Size = new System.Drawing.Size(146, 20);
             this.txt_massa.TabIndex = 5;
             // 
             // txt_velocità
@@ -130,7 +131,7 @@
             this.txt_velocità.Location = new System.Drawing.Point(526, 83);
             this.txt_velocità.Margin = new System.Windows.Forms.Padding(2);
             this.txt_velocità.Name = "txt_velocità";
-            this.txt_velocità.Size = new System.Drawing.Size(131, 20);
+            this.txt_velocità.Size = new System.Drawing.Size(146, 20);
             this.txt_velocità.TabIndex = 6;
             this.txt_velocità.Enter += new System.EventHandler(this.txt_velocità_Enter);
             this.txt_velocità.Leave += new System.EventHandler(this.txt_velocità_Leave);
@@ -178,7 +179,7 @@
             this.txt_raggio.Location = new System.Drawing.Point(526, 11);
             this.txt_raggio.Margin = new System.Windows.Forms.Padding(2);
             this.txt_raggio.Name = "txt_raggio";
-            this.txt_raggio.Size = new System.Drawing.Size(131, 20);
+            this.txt_raggio.Size = new System.Drawing.Size(146, 20);
             this.txt_raggio.TabIndex = 12;
             // 
             // cmb_colore
@@ -190,7 +191,7 @@
             this.cmb_colore.FormattingEnabled = true;
             this.cmb_colore.Location = new System.Drawing.Point(526, 108);
             this.cmb_colore.Name = "cmb_colore";
-            this.cmb_colore.Size = new System.Drawing.Size(131, 21);
+            this.cmb_colore.Size = new System.Drawing.Size(146, 21);
             this.cmb_colore.TabIndex = 14;
             // 
             // label4
@@ -211,7 +212,7 @@
             this.Cmb_esempi.FormattingEnabled = true;
             this.Cmb_esempi.Location = new System.Drawing.Point(437, 236);
             this.Cmb_esempi.Name = "Cmb_esempi";
-            this.Cmb_esempi.Size = new System.Drawing.Size(220, 21);
+            this.Cmb_esempi.Size = new System.Drawing.Size(235, 21);
             this.Cmb_esempi.TabIndex = 16;
             this.Cmb_esempi.SelectedIndexChanged += new System.EventHandler(this.Cmb_esempi_SelectedIndexChanged);
             // 

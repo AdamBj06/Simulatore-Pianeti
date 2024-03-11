@@ -35,7 +35,7 @@ namespace Simulatore_Pianeti
                 Color color = Color.FromKnownColor(knownColor);
                 if (!color.IsSystemColor)
                 {
-                    cmb_colore.Items.Add(color.Name);
+                    cmb_colore.Items.Add(color);
                 }
             }
 
@@ -50,6 +50,8 @@ namespace Simulatore_Pianeti
             Vettore velocità;
             double raggio;
             Color colore;
+
+            //tryparse
 
             if (txt_massa.Text != "" && txt_posizione.Text != "" && txt_velocità.Text != "") {
                 massa = double.Parse(txt_massa.Text);
@@ -79,7 +81,7 @@ namespace Simulatore_Pianeti
             txt_posizione.Clear();
             txt_velocità.Clear();
             txt_massa.Clear();
-            cmb_colore.Text = "";
+            cmb_colore.SelectedIndex = -1;
         }
 
         private void Btn_Remove_Click(object sender, EventArgs e)
@@ -95,25 +97,38 @@ namespace Simulatore_Pianeti
                 planetario.Pianeti.Add(p);
             }
 
+            btn_play.Text = "Resume";
             Form2 Form2 = new Form2();
             Form2.Owner = this;
             this.Visible = false;
             Form2.Show();
         }
 
+        private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Pianeta p = (Pianeta)lst_Pianeti.Items[lst_Pianeti.SelectedIndex];
+            txt_raggio.Text = p.Raggio.ToString("0.0000E0");
+            txt_posizione.Text = p.Posizione.ToString("0.0000E0");
+            txt_velocità.Text = p.Velocità.ToString("0.0000E0");
+            txt_massa.Text = p.Massa.ToString("0.0000E0");
+            cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+        }
+
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//Esempi preimpostati
         {
             lst_Pianeti.Items.Clear();
-            switch (Cmb_esempi.SelectedIndex)
+            double xs = 1e9d * 453.3d;//posizione del sole
+            double ys = 1e9d * 382.5d;
+            switch (Cmb_esempi.SelectedIndex)//sistemare valori
             {
                 case 0://Sistema Sole e Terra
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.52097701e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
                     break;
                 case 1://Sistema Sole, Terra e Marte
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(1e9d * 453.3d, 1e9d * 382.5), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(1e9d * 453.3d + 1.52097701e11d, 1e9d * 382.5d), new Vettore(0d, 2.972222e4d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(1e9d * 453.3d + 2.28e11d, 1e9d * 382.5d), new Vettore(0d, 2.413e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
                     break;
                 default:
                     break;
@@ -210,7 +225,7 @@ namespace Simulatore_Pianeti
             xi = e.X; yi = e.Y;
             if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50 && inPos)
             {
-                txt_posizione.Text = (new Vettore((xi - 750) * 1e9, (380 - yi) * 1e9)).ToString("0.0000E0");
+                txt_posizione.Text = (new Vettore((xi - 700) * 1e9, (Height - 48 - yi) * 1e9)).ToString("0.0000E0");
                 g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
             }
         }

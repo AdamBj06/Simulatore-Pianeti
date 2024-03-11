@@ -165,6 +165,11 @@ namespace Simulatore_Pianeti
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + (planetario.DeltaT).ToString(".00") + "h/tick";
         }
 
+        private void Form2_Scroll(object sender, ScrollEventArgs e)
+        {
+            
+        }
+
         private void Form2_MouseClick(object sender, MouseEventArgs e)
         {
             if(e.X > trackBar_speed.Location.X && e.Y > trackBar_speed.Location.Y) 

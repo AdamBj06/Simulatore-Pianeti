@@ -96,6 +96,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form2";
             this.Text = "Simulatore_Pianeti finestra di simulazione";
+            this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Form2_Scroll);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form2_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form2_MouseClick);
