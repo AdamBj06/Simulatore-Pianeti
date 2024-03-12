@@ -84,7 +84,7 @@ namespace Simulatore_Pianeti
             }
 
             if(cmb_colore.SelectedIndex != -1) {
-                colore = Color.FromName(cmb_colore.SelectedItem.ToString());
+                colore = (Color)cmb_colore.SelectedItem;
             } else {
                 colore = Color.White;
             }
@@ -92,16 +92,22 @@ namespace Simulatore_Pianeti
             Pianeta pianeta = new Pianeta(colore, raggio, massa, posizione, velocità);
             lst_Pianeti.Items.Add(pianeta);
 
-            txt_raggio.Clear();
-            txt_posizione.Clear();
-            txt_velocità.Clear();
-            txt_massa.Clear();
-            cmb_colore.SelectedIndex = -1;
+            Clear();
         }
 
         private void Btn_Remove_Click(object sender, EventArgs e)
         {
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
+            Clear();
+        }
+
+        private void Clear()
+        {
+            txt_raggio.Clear();
+            txt_posizione.Clear();
+            txt_velocità.Clear();
+            txt_massa.Clear();
+            cmb_colore.SelectedIndex = -1;
         }
 
         private void Btn_Play_Click(object sender, EventArgs e)//Inizia la simulazione
