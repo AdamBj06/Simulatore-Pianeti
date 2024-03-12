@@ -41,6 +41,7 @@ namespace Simulatore_Pianeti
 
             Cmb_esempi.Items.Add("Sistema Sole e Terra");
             Cmb_esempi.Items.Add("Sistema Sole, Terra e Marte");
+            //altri esempi
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
@@ -153,6 +154,8 @@ namespace Simulatore_Pianeti
                     lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
                     lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
                     lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
+                    break;
+                case 2://sistema solare
                     break;
                 default:
                     break;
