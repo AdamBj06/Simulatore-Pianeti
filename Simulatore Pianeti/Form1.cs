@@ -51,24 +51,39 @@ namespace Simulatore_Pianeti
             double raggio;
             Color colore;
 
-            //tryparse
-
-            if (txt_massa.Text != "" && txt_posizione.Text != "" && txt_velocità.Text != "") {
-                massa = double.Parse(txt_massa.Text);
-                posizione = Vettore.Parse(txt_posizione.Text);
-                velocità = Vettore.Parse(txt_velocità.Text);
-            } else {
+            if (txt_massa.Text == "" && txt_posizione.Text == "" && txt_velocità.Text == "")
+            {
                 MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale");
                 return;
             }
 
-            if(txt_raggio.Text != "") {
-                raggio = double.Parse(txt_raggio.Text);
-            } else {
+            if (txt_raggio.Text == "")
+            {
                 raggio = 0;
             }
+            else if(!double.TryParse(txt_raggio.Text, out raggio))
+            {
+                MessageBox.Show("Formato in imput del raggio non valido", "Errore");
+                return;
+            }
 
-            if(cmb_colore.Text != "") {
+            if (!double.TryParse(txt_massa.Text, out massa))
+            {
+                MessageBox.Show("Formato in imput della massa non valido", "Errore");
+                return;
+            }
+            if (!Vettore.TryParse(txt_posizione.Text, out posizione))
+            {
+                MessageBox.Show("Formato in imput della posizione non valido", "Errore");
+                return;
+            }
+            if (!Vettore.TryParse(txt_velocità.Text, out velocità))
+            {
+                MessageBox.Show("Formato in imput della velocità non valido", "Errore");
+                return;
+            }
+
+            if(cmb_colore.SelectedIndex != -1) {
                 colore = Color.FromName(cmb_colore.SelectedItem.ToString());
             } else {
                 colore = Color.White;
@@ -106,12 +121,15 @@ namespace Simulatore_Pianeti
 
         private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Pianeta p = (Pianeta)lst_Pianeti.Items[lst_Pianeti.SelectedIndex];
-            txt_raggio.Text = p.Raggio.ToString("0.0000E0");
-            txt_posizione.Text = p.Posizione.ToString("0.0000E0");
-            txt_velocità.Text = p.Velocità.ToString("0.0000E0");
-            txt_massa.Text = p.Massa.ToString("0.0000E0");
-            cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+            if(lst_Pianeti.SelectedIndex != -1)
+            {
+                Pianeta p = (Pianeta)lst_Pianeti.Items[lst_Pianeti.SelectedIndex];
+                txt_raggio.Text = p.Raggio.ToString("0.0000E0");
+                txt_posizione.Text = p.Posizione.ToString("0.0000E0");
+                txt_velocità.Text = p.Velocità.ToString("0.0000E0");
+                txt_massa.Text = p.Massa.ToString("0.0000E0");
+                cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+            }
         }
 
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//Esempi preimpostati
