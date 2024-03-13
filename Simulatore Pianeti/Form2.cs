@@ -158,6 +158,7 @@ namespace Simulatore_Pianeti
             }
         }
 
+        //https://stackoverflow.com/questions/37262282/zooming-graphics-based-on-current-mouse-position
         private void Form2_MouseWheel(object sender, MouseEventArgs e)
         {
             float mx0, my0;
@@ -178,13 +179,11 @@ namespace Simulatore_Pianeti
             }
             
         }
-
         void scr2obj(out float ox, out float oy, float sx, float sy)
         {
             ox = (sx / zoom) - traslazioneX;
             oy = (sy / zoom) - traslazioneY;
         }
-
         void obj2scr(out float sx, out float sy, float ox, float oy)
         {
             sx = (traslazioneX + ox) * zoom;
