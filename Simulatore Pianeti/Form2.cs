@@ -6,9 +6,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Simulatore_Pianeti
 {
@@ -62,8 +64,8 @@ namespace Simulatore_Pianeti
         }
 
         public bool mostrascia = false;
-        public double scalaPos = 1e9;
-        public double scalaR = 1e7;
+        public float zoom = 1.0f;
+        public float traslazioneX = 0, traslazioneY = 0;
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
             trackBar_speed.Location = new Point(ClientSize.Width - trackBar_speed.Width, ClientSize.Height - trackBar_speed.Height);
@@ -71,19 +73,23 @@ namespace Simulatore_Pianeti
             lbl_fps.Location = new Point(Width - lbl_fps.Width - 20, 10);
 
             Graphics g = CreateGraphics();
+            
+            g.ScaleTransform(zoom, zoom);
+            g.TranslateTransform(traslazioneX, traslazioneY);
+
             foreach (Pianeta p in planetario.Pianeti)//disegna tutti i pianeti/stelle
             {
-                if (p.Raggio / scalaR > 8)
+                float r = (float)(p.Raggio / 1e7);
+                if (r > 8)
                 {
-                    float x = (float)Math.Round(p.Posizione.X / scalaPos) - (float)(p.Raggio / scalaR / 2);
-                    float y = Height - (float)Math.Round(p.Posizione.Y / scalaPos) - (float)(p.Raggio / scalaR / 2);
-                    float r = (float)(p.Raggio / scalaR);
+                    float x = (float)(Math.Round(p.Posizione.X / 1e9) - (float)(r / 2));
+                    float y = Height - (float)(Math.Round(p.Posizione.Y / 1e9) - (float)(r / 2));
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, r, r);
                 }
                 else
                 {
-                    float x = (float)Math.Round(p.Posizione.X / scalaPos);
-                    float y = Height - (float)Math.Round(p.Posizione.Y / scalaPos);
+                    float x = (float)Math.Round(p.Posizione.X / 1e9 - 4);
+                    float y = Height - (float)Math.Round(p.Posizione.Y / 1e9 - 4);
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, 8, 8);
                 }
             }
@@ -154,16 +160,35 @@ namespace Simulatore_Pianeti
 
         private void Form2_MouseWheel(object sender, MouseEventArgs e)
         {
+            float mx0, my0;
+            scr2obj(out mx0, out my0, e.X, e.Y);
             if (e.Delta < 0)
             {
-                scalaPos /= 1.1d;
-                scalaR /= 1.1d;
+                zoom -= 0.1f;
+                obj2scr(out mx0, out my0, mx0, my0);
+                traslazioneX += (e.X - mx0) / zoom;
+                traslazioneY += (e.Y - my0) / zoom;
             }
-            else if (e.Delta > 0)
+            else
             {
-                scalaPos *= 1.1d;
-                scalaR *= 1.1d;
+                zoom += 0.1f;
+                obj2scr(out mx0, out my0, mx0, my0);
+                traslazioneX += (e.X - mx0) / zoom;
+                traslazioneY += (e.Y - my0) / zoom;
             }
+            
+        }
+
+        void scr2obj(out float ox, out float oy, float sx, float sy)
+        {
+            ox = (sx / zoom) - traslazioneX;
+            oy = (sy / zoom) - traslazioneY;
+        }
+
+        void obj2scr(out float sx, out float sy, float ox, float oy)
+        {
+            sx = (traslazioneX + ox) * zoom;
+            sy = (traslazioneY + oy) * zoom;
         }
         #endregion
         private void trackBar_speed_Scroll(object sender, EventArgs e)//velocità della simulazione
@@ -185,10 +210,10 @@ namespace Simulatore_Pianeti
 
             foreach (Pianeta p in planetario.Pianeti)
             {
-                int xc = (int)Math.Round(p.Posizione.X / scalaPos);//centro del cerchio/pianeta
-                int yc = Height - (int)Math.Round(p.Posizione.Y / scalaPos);//centro del cerchio/pianeta
-                int r = (int)(p.Raggio / scalaR);//raggio del cerchio/pianeta
-                if (p.Raggio / scalaR > 8 && DentroCerchio(xc, yc, r, e.X, e.Y))
+                int xc = (int)(Math.Round(p.Posizione.X / 1e9) * zoom - traslazioneX);//centro del cerchio/pianeta
+                int yc = Height - (int)(Math.Round(p.Posizione.Y / 1e9) * zoom + traslazioneY);//centro del cerchio/pianeta
+                int r = (int)(p.Raggio / 1e7 * zoom);//raggio del cerchio/pianeta
+                if (r > 8 && DentroCerchio(xc, yc, r, e.X, e.Y))
                 {
                     pianeta = p;
                 }
@@ -204,17 +229,15 @@ namespace Simulatore_Pianeti
             }
         }
 
+        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)//controlla se la posizione (x;y) è dentro il cerchio
+        {
+            return (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
+        }
+
         public string InformazioniPianeta(Pianeta p)
         {//(per adam) guardare Iformattable
             return string.Format("Pianeta: {0}\nMassa: {1}\nPosizione: {2}\nVelocità: {3}\nRaggio: {4}",
                                  p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
-        }
-
-        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)//controlla se la posizione (x;y) è dentro il cerchio
-        {
-            int dx = xc - x;
-            int dy = yc - y;
-            return dx * dx + dy * dy <= r * r;
         }
     }
 }
