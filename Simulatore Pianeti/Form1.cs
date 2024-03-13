@@ -15,8 +15,7 @@ namespace Simulatore_Pianeti
     public partial class Form1 : Form
     {   /*da fare: 
          * aggiungere legenda per i pulsanti in form1, 
-         * aggiungere altri esempi,
-         * aggiungere errori in caso di azioni "proibite"...
+         * aggiungere altri esempi...
          * */
         public static Planetario planetario = new Planetario();
 

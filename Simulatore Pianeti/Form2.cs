@@ -21,6 +21,7 @@ namespace Simulatore_Pianeti
         public Form2()
         {
             InitializeComponent();
+            this.MouseWheel += new MouseEventHandler(Form2_MouseWheel);
             planetario.DeltaT = 20d;
             cronometro_fps.Start();
         }
@@ -61,6 +62,8 @@ namespace Simulatore_Pianeti
         }
 
         public bool mostrascia = false;
+        public double scalaPos = 1e9;
+        public double scalaR = 1e7;
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
             trackBar_speed.Location = new Point(ClientSize.Width - trackBar_speed.Width, ClientSize.Height - trackBar_speed.Height);
@@ -70,17 +73,17 @@ namespace Simulatore_Pianeti
             Graphics g = CreateGraphics();
             foreach (Pianeta p in planetario.Pianeti)//disegna tutti i pianeti/stelle
             {
-                if (p.Raggio > 8e7d)
+                if (p.Raggio / scalaR > 8)
                 {
-                    float x = (float)Math.Round(p.Posizione.X / 1e9d) - (float)(p.Raggio / 1e7d / 2);
-                    float y = Height - (float)Math.Round(p.Posizione.Y / 1e9d) - (float)(p.Raggio / 1e7d / 2);
-                    float r = (float)(p.Raggio / 1e7d);
+                    float x = (float)Math.Round(p.Posizione.X / scalaPos) - (float)(p.Raggio / scalaR / 2);
+                    float y = Height - (float)Math.Round(p.Posizione.Y / scalaPos) - (float)(p.Raggio / scalaR / 2);
+                    float r = (float)(p.Raggio / scalaR);
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, r, r);
                 }
                 else
                 {
-                    float x = (float)Math.Round(p.Posizione.X / 1e9d);
-                    float y = Height - (float)Math.Round(p.Posizione.Y / 1e9d);
+                    float x = (float)Math.Round(p.Posizione.X / scalaPos);
+                    float y = Height - (float)Math.Round(p.Posizione.Y / scalaPos);
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, 8, 8);
                 }
             }
@@ -88,7 +91,7 @@ namespace Simulatore_Pianeti
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
-            //esci dalla simulazione per tornare al form principale
+            //esce dalla simulazione per tornare al form principale
             if(e.KeyCode == Keys.Escape)
             {
                 Owner.Visible = true;
@@ -103,15 +106,6 @@ namespace Simulatore_Pianeti
             {
                 timer1.Enabled = true;
             }
-            /*//regola la velocità
-            if (e.KeyCode == Keys.OemMinus)//[-]
-            {
-                planetario.DeltaT--;
-            }
-            if (e.KeyCode == Keys.Oemplus)//[+]
-            {
-                planetario.DeltaT++;
-            }*/
             //skip
             if (e.KeyCode == Keys.Right)//avanti 16 tick
             {
@@ -137,7 +131,7 @@ namespace Simulatore_Pianeti
             }
         }
 
-        #region Movimento nel form
+        #region Regolazione del form
         private void Form2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
@@ -157,17 +151,25 @@ namespace Simulatore_Pianeti
                 mousePressed = false;
             }
         }
-        #endregion
 
+        private void Form2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                scalaPos /= 1.1d;
+                scalaR /= 1.1d;
+            }
+            else if (e.Delta > 0)
+            {
+                scalaPos *= 1.1d;
+                scalaR *= 1.1d;
+            }
+        }
+        #endregion
         private void trackBar_speed_Scroll(object sender, EventArgs e)//velocità della simulazione
         {
             planetario.DeltaT = trackBar_speed.Value;
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + (planetario.DeltaT).ToString(".00") + "h/tick";
-        }
-
-        private void Form2_Scroll(object sender, ScrollEventArgs e)
-        {
-            
         }
 
         private void Form2_MouseClick(object sender, MouseEventArgs e)
@@ -183,10 +185,10 @@ namespace Simulatore_Pianeti
 
             foreach (Pianeta p in planetario.Pianeti)
             {
-                int xc = (int)Math.Round(p.Posizione.X / 1e9d);//centro del cerchio/pianeta
-                int yc = Height - (int)Math.Round(p.Posizione.Y / 1e9d);//centro del cerchio/pianeta
-                int r = (int)(p.Raggio / 1e7d);//raggio del cerchio/pianeta
-                if (p.Raggio > 8e7d && DentroCerchio(xc, yc, r, e.X, e.Y))
+                int xc = (int)Math.Round(p.Posizione.X / scalaPos);//centro del cerchio/pianeta
+                int yc = Height - (int)Math.Round(p.Posizione.Y / scalaPos);//centro del cerchio/pianeta
+                int r = (int)(p.Raggio / scalaR);//raggio del cerchio/pianeta
+                if (p.Raggio / scalaR > 8 && DentroCerchio(xc, yc, r, e.X, e.Y))
                 {
                     pianeta = p;
                 }
