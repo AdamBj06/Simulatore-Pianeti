@@ -66,7 +66,7 @@ namespace Simulatore_Pianeti
 
         public float zoom = 1.0f;
         public float traslazioneX = 0, traslazioneY = 0;
-        public Matrix transformMatrix;
+        public Matrix transformMatrix;//https://stackoverflow.com/questions/20628979/actual-coordinate-after-scaletransfrom
         public PointF[] centri;
         private void Form2_Paint(object sender, PaintEventArgs e)
         {

@@ -27,9 +27,9 @@ namespace Simulatore_Pianeti
             planetario.Pianeti = new List<Pianeta>();
         }
 
-        private void InitializeComboBoxes()
+        private void InitializeComboBoxes()//riempe le combobox
         {
-            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema
+            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema)
             {
                 Color color = Color.FromKnownColor(knownColor);
                 if (!color.IsSystemColor)
@@ -45,48 +45,48 @@ namespace Simulatore_Pianeti
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            double massa;
-            Vettore posizione;
-            Vettore velocità;
             double raggio;
             Color colore;
 
             if (txt_massa.Text == "" && txt_posizione.Text == "" && txt_velocità.Text == "")
             {
-                MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale");
+                MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale", "Errore");
                 return;
             }
 
             if (txt_raggio.Text == "")
-            {
+            {//se l'utente non ha scelto un raggio, raggio=0
                 raggio = 0;
             }
             else if(!double.TryParse(txt_raggio.Text, out raggio))
             {
-                MessageBox.Show("Formato in imput del raggio non valido", "Errore");
+                MessageBox.Show("Raggio non valido", "Errore");
                 return;
             }
 
-            if (!double.TryParse(txt_massa.Text, out massa))
-            {
-                MessageBox.Show("Formato in imput della massa non valido", "Errore");
-                return;
-            }
-            if (!Vettore.TryParse(txt_posizione.Text, out posizione))
-            {
-                MessageBox.Show("Formato in imput della posizione non valido", "Errore");
-                return;
-            }
-            if (!Vettore.TryParse(txt_velocità.Text, out velocità))
-            {
-                MessageBox.Show("Formato in imput della velocità non valido", "Errore");
-                return;
-            }
-
-            if(cmb_colore.SelectedIndex != -1) {
+            if (cmb_colore.SelectedIndex != -1)
+            {//se l'utente ha scelto un colore, metti quel colore
                 colore = (Color)cmb_colore.SelectedItem;
-            } else {
+            }
+            else
+            {//se no metti bianco
                 colore = Color.White;
+            }
+
+            if (!double.TryParse(txt_massa.Text, out double massa))
+            {
+                MessageBox.Show("Massa non valida", "Errore");
+                return;
+            }
+            if (!Vettore.TryParse(txt_posizione.Text, out Vettore posizione))
+            {
+                MessageBox.Show("Posizione non valida", "Errore");
+                return;
+            }
+            if (!Vettore.TryParse(txt_velocità.Text, out Vettore velocità))
+            {
+                MessageBox.Show("Velocità non valida", "Errore");
+                return;
             }
 
             Pianeta pianeta = new Pianeta(colore, raggio, massa, posizione, velocità);
@@ -119,10 +119,10 @@ namespace Simulatore_Pianeti
             }
 
             btn_play.Text = "Resume";
-            Form2 Form2 = new Form2();
-            Form2.Owner = this; 
-            this.Visible = false;
-            Form2.Show();
+            Form2 Form2 = new Form2();//crea un secondo form
+            Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
+            this.Visible = false;//rende invisibile il primo form
+            Form2.Show();//fa vedere il secondo form
         }
 
         private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
