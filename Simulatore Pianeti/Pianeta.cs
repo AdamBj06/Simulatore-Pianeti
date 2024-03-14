@@ -16,6 +16,7 @@ namespace Simulatore_Pianeti
         public Vettore Velocità { get; set; }//in metri al secondo
         public Vettore Forza { get; set; }//che agisce sul corpo
         public Vettore Accelerazione { get; set; }
+        //public List<Point> Scia { get; set; }
 
         public Pianeta(Color c, double r, double m, Vettore pos, Vettore v)
         {

@@ -55,7 +55,7 @@
             // lbl_fps
             // 
             this.lbl_fps.AutoSize = true;
-            this.lbl_fps.Location = new System.Drawing.Point(1027, 9);
+            this.lbl_fps.Location = new System.Drawing.Point(1056, 9);
             this.lbl_fps.Name = "lbl_fps";
             this.lbl_fps.Size = new System.Drawing.Size(39, 13);
             this.lbl_fps.TabIndex = 1;
