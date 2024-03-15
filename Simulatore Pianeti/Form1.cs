@@ -14,21 +14,15 @@ namespace Simulatore_Pianeti
 {
     public partial class Form1 : Form
     {   /*da fare: 
-         * aggiungere legenda per i pulsanti in form1, 
          * aggiungere altri esempi...
          * */
-        public static Planetario planetario = new Planetario();
+        public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
 
         public Form1()
         {
             InitializeComponent();
-            InitializeComboBoxes();
-
-            planetario.Pianeti = new List<Pianeta>();
-        }
-
-        private void InitializeComboBoxes()//riempe le combobox
-        {
+            //riempe le combobox
+            #region InitializeComboBoxes
             foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema)
             {
                 Color color = Color.FromKnownColor(knownColor);
@@ -41,19 +35,18 @@ namespace Simulatore_Pianeti
             Cmb_esempi.Items.Add("Sistema Sole e Terra");
             Cmb_esempi.Items.Add("Sistema Sole, Terra e Marte");
             //altri esempi
+            #endregion
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            double raggio;
-            Color colore;
-
             if (txt_massa.Text == "" && txt_posizione.Text == "" && txt_velocità.Text == "")
             {
                 MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale", "Errore");
                 return;
             }
 
+            double raggio;
             if (txt_raggio.Text == "")
             {//se l'utente non ha scelto un raggio, raggio=0
                 raggio = 0;
@@ -64,6 +57,7 @@ namespace Simulatore_Pianeti
                 return;
             }
 
+            Color colore;
             if (cmb_colore.SelectedIndex != -1)
             {//se l'utente ha scelto un colore, metti quel colore
                 colore = (Color)cmb_colore.SelectedItem;
@@ -208,7 +202,7 @@ namespace Simulatore_Pianeti
         }
 
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
-        int xi, yi, xf, yf;
+        int xi, yi;
         bool inPos = false, inVel = false;
 
         private void txt_posizione_Enter(object sender, EventArgs e)
@@ -234,9 +228,8 @@ namespace Simulatore_Pianeti
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
-            Brush sfondo = new SolidBrush(BackColor);
             Pen nero = new Pen(Color.Black, 4);
-            g.FillRectangle(sfondo, 700, 0, Width, Height);
+            g.Clear(BackColor);//ripulisce il form quando neccessario
 
             g.DrawLine(nero, 698, Height - 48, Width - 40, Height - 48);//asse x
             g.DrawLine(nero, 698, Height - 48, 698, 20);//asse y
@@ -246,13 +239,16 @@ namespace Simulatore_Pianeti
         {
             Graphics g = CreateGraphics();
             Brush sfondo = new SolidBrush(BackColor);
-            g.FillRectangle(sfondo, 700, 0, Width, Height - 50);
+            g.FillRectangle(sfondo, 700, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
 
             xi = e.X; yi = e.Y;
-            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50 && inPos)
+            if (xi > 700 && yi < Height - 50)//se il click avviene nella parte del form permesssa
             {
-                txt_posizione.Text = (new Vettore((xi - 700) * 1e9, (Height - 48 - yi) * 1e9)).ToString("0.0000E0");
-                g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
+                if (inPos)
+                {
+                    txt_posizione.Text = new Vettore((xi - 700) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos finale - origine (pos iniziale)
+                    g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
+                }
             }
         }
 
@@ -261,11 +257,14 @@ namespace Simulatore_Pianeti
             Graphics g = CreateGraphics();
             Pen nero = new Pen(Color.Black, 3);
 
-            xf = e.X; yf = e.Y;
-            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50 && inVel)
+            int xf = e.X; int yf = e.Y;
+            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
             {
-                txt_velocità.Text = (new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2)).ToString("0.0000E0");
-                g.DrawLine(nero, xi, yi, xf, yf);
+                if(inVel)
+                {
+                    txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("0.0000E0");//pos finale - pos iniziale, in y invertito perchè siamo nel 4 quadrante
+                    g.DrawLine(nero, xi, yi, xf, yf);
+                }
             }
         }
         #endregion

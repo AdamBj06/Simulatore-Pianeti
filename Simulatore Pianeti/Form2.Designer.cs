@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label = new System.Windows.Forms.Label();
             this.lbl_fps = new System.Windows.Forms.Label();
             this.trackBar_speed = new System.Windows.Forms.TrackBar();
             this.lbl_speed = new System.Windows.Forms.Label();
+            this.lbl_legenda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_speed)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,15 +48,17 @@
             // label
             // 
             this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Transparent;
             this.label.Location = new System.Drawing.Point(12, 9);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(55, 78);
+            this.label.Size = new System.Drawing.Size(144, 78);
             this.label.TabIndex = 0;
-            this.label.Text = "Pianeta:\r\nMassa:\r\nPosizione:\r\nVelocità:\r\nRaggio:\r\n\r\n";
+            this.label.Text = "Pianeta: clicca su un pianeta\r\nMassa:\r\nPosizione:\r\nVelocità:\r\nRaggio:\r\n\r\n";
             // 
             // lbl_fps
             // 
             this.lbl_fps.AutoSize = true;
+            this.lbl_fps.BackColor = System.Drawing.Color.Transparent;
             this.lbl_fps.Location = new System.Drawing.Point(1056, 9);
             this.lbl_fps.Name = "lbl_fps";
             this.lbl_fps.Size = new System.Drawing.Size(39, 13);
@@ -77,11 +81,22 @@
             // lbl_speed
             // 
             this.lbl_speed.AutoSize = true;
+            this.lbl_speed.BackColor = System.Drawing.Color.Transparent;
             this.lbl_speed.Location = new System.Drawing.Point(984, 603);
             this.lbl_speed.Name = "lbl_speed";
             this.lbl_speed.Size = new System.Drawing.Size(111, 13);
             this.lbl_speed.TabIndex = 4;
             this.lbl_speed.Text = "33.33g/s; 20.00h/tick";
+            // 
+            // lbl_legenda
+            // 
+            this.lbl_legenda.AutoSize = true;
+            this.lbl_legenda.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_legenda.Location = new System.Drawing.Point(12, 566);
+            this.lbl_legenda.Name = "lbl_legenda";
+            this.lbl_legenda.Size = new System.Drawing.Size(309, 91);
+            this.lbl_legenda.TabIndex = 5;
+            this.lbl_legenda.Text = resources.GetString("lbl_legenda.Text");
             // 
             // Form2
             // 
@@ -89,6 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1113, 666);
+            this.Controls.Add(this.lbl_legenda);
             this.Controls.Add(this.lbl_speed);
             this.Controls.Add(this.trackBar_speed);
             this.Controls.Add(this.lbl_fps);
@@ -114,5 +130,6 @@
         private System.Windows.Forms.Label lbl_fps;
         private System.Windows.Forms.TrackBar trackBar_speed;
         private System.Windows.Forms.Label lbl_speed;
+        private System.Windows.Forms.Label lbl_legenda;
     }
 }
