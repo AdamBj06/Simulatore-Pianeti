@@ -45,27 +45,28 @@ namespace Simulatore_Pianeti
                 planetario.Move();
             }
 
-            Refresh();
+            Refresh();//ripulisce il form è fa partire l'evento paint
 
             if (pianetaSelezionato != null)
             {
                 label.Text = InformazioniPianeta(pianetaSelezionato);
             }
 
+            //fps
             lbl_fps.Text = (1000 / cronometro_fps.ElapsedMilliseconds).ToString();
             cronometro_fps.Restart();
-
+            //
 
             deltaMouseX = MousePosition.X - mouseX;//pos finale - pos iniziale
             deltaMouseY = mouseY - MousePosition.Y;//idem ma invertito perchè siamo nel 4 quadrante
             if (mousePressed)
             {
-                foreach(Pianeta p in planetario.Pianeti)
+                foreach(Pianeta p in planetario.Pianeti)//trasla i pianeti
                 {
                     p.Posizione.X += 4e8d * deltaMouseX;
                     p.Posizione.Y += 4e8d * deltaMouseY;
                 }
-                mouseX = MousePosition.X;
+                mouseX = MousePosition.X;//la pos. iniz. diventa la posizione attuale del mouse
                 mouseY = MousePosition.Y;
             }
         }
@@ -88,7 +89,7 @@ namespace Simulatore_Pianeti
             g.TranslateTransform(traslazioneX, traslazioneY);//trasla in base allo zoom
             transformMatrix = g.Transform;//salva le trasformazioni in una matrice
 
-            centri = new PointF[planetario.Pianeti.Count];
+            centri = new PointF[planetario.Pianeti.Count];//crea l'array grande quanto il numero di pianeti presenti
             for (int i = 0; i < centri.Length; i++)//disegna tutti i pianeti/stelle
             {
                 float xc = (float)Math.Round(planetario.Pianeti[i].Posizione.X / 1e9);//x del centro del pianeta
@@ -157,13 +158,14 @@ namespace Simulatore_Pianeti
                                  p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
         }
 
+        #region pulsanti (tastiera)
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             //esce dalla simulazione per tornare al form principale
             if(e.KeyCode == Keys.Escape)
             {
-                Owner.Visible = true;
-                Close();
+                Owner.Visible = true;//Owner è form1, lo rende visibile
+                this.Close();//chiude questo form
             }
             //stop/start
             if (e.KeyCode == Keys.Space && timer1.Enabled == true)
@@ -193,24 +195,24 @@ namespace Simulatore_Pianeti
             }
             if (e.KeyCode == Keys.Oemcomma && timer1.Enabled == false)//indietro 1 tick [.]
             {
-                planetario.DeltaT = -planetario.DeltaT;
+                planetario.DeltaT = -planetario.DeltaT;//inverte deltaT
                 timer1_Tick(sender, e);
-                planetario.DeltaT = -planetario.DeltaT;
+                planetario.DeltaT = -planetario.DeltaT;//reinverte deltaT (torna normale)
             }
         }
+        #endregion
 
-        #region Regolazione del form
+        #region spostamento
         private void Form2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
             {
-                Cursor = Cursors.NoMove2D;
-                mouseX = MousePosition.X;
+                Cursor = Cursors.NoMove2D;//cambia la forma del cursore
+                mouseX = MousePosition.X;//posizione iniziale del mouse
                 mouseY = MousePosition.Y;
                 mousePressed = true;
             }
         }
-
         private void Form2_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
@@ -219,7 +221,9 @@ namespace Simulatore_Pianeti
                 mousePressed = false;
             }
         }
+        #endregion
 
+        #region zoom
         //algoritmo di zoom: https://stackoverflow.com/questions/37262282/zooming-graphics-based-on-current-mouse-position
         private void Form2_MouseWheel(object sender, MouseEventArgs e)
         {
