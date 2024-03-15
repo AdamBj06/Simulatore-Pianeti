@@ -13,9 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace Simulatore_Pianeti
 {
     public partial class Form1 : Form
-    {   /*da fare: 
-         * aggiungere altri esempi...
-         * */
+    {   //da fare: aggiungere altri esempi...
         public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
 
         public Form1()
@@ -38,6 +36,7 @@ namespace Simulatore_Pianeti
             #endregion
         }
 
+        #region impostazione
         private void Btn_Add_Click(object sender, EventArgs e)
         {
             if (txt_massa.Text == "" && txt_posizione.Text == "" && txt_velocità.Text == "")
@@ -131,8 +130,10 @@ namespace Simulatore_Pianeti
                 cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
             }
         }
+#endregion
 
-        private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//Esempi preimpostati
+        #region Esempi preimpostati
+        private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
         {
             lst_Pianeti.Items.Clear();
             double xs = 1e9d * 453.3d;//posizione del sole
@@ -154,7 +155,9 @@ namespace Simulatore_Pianeti
                     break;
             }
         }
+        #endregion
 
+        #region Tema
         bool TemaScuro = true;
         private void btn_tema_Click(object sender, EventArgs e)
         {
@@ -200,6 +203,7 @@ namespace Simulatore_Pianeti
                 TemaScuro = true;
             }
         }
+        #endregion
 
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
         int xi, yi;

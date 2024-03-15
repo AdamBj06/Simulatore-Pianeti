@@ -19,7 +19,6 @@ namespace Simulatore_Pianeti
     {
         public Planetario planetario = Form1.planetario;//ottiene la classe planetario dichiarata nel primo form
         public Stopwatch cronometro_fps = new Stopwatch();
-        
 
         public Form2()
         {
