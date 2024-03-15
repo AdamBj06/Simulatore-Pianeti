@@ -19,7 +19,7 @@ namespace Simulatore_Pianeti
     {
         public Planetario planetario = Form1.planetario;//ottiene la classe planetario dichiarata nel primo form
         public Stopwatch cronometro_fps = new Stopwatch();
-        public int velocitàSim = 3600;//velocità di simulazione
+        
 
         public Form2()
         {
@@ -29,19 +29,22 @@ namespace Simulatore_Pianeti
             cronometro_fps.Start();
         }
 
-        private void trackBar_speed_Scroll(object sender, EventArgs e)//velocità della simulazione
+        #region velocità di simulazione
+        private void trackBar_speed_Scroll(object sender, EventArgs e)
         {
             planetario.DeltaT = trackBar_speed.Value;//i valori sono tra -200 e +200
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + planetario.DeltaT.ToString(".00") + "h/tick";
         }
+        #endregion
 
+        #region Simulazione
         public Pianeta pianetaSelezionato;//pianeta di cui far vedere le info
         public bool mousePressed;//vero se il tasto centrale del mouse è cliccato
         public int mouseX, mouseY, deltaMouseX, deltaMouseY;//posizioni iniziali del mouse; distanza da pos in. e pos f.
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int x = 0; x <= velocitàSim; x++)
-            {//il move avvine "velocitàSim volte" per velocizzare la simulazione senza perdere precisione
+            for (int x = 0; x <= 3600; x++)
+            {//il move avvine 3600 volte per velocizzare la simulazione senza perdere precisione
                 planetario.Move();
             }
 
@@ -110,7 +113,9 @@ namespace Simulatore_Pianeti
                 }
             }
         }
+        #endregion
 
+        #region InformazioniPianeta
         private void Form2_MouseClick(object sender, MouseEventArgs e)
         {
             //se il click avviene dove si trova lo slider lo attiva, se no lo disattiva
@@ -157,6 +162,7 @@ namespace Simulatore_Pianeti
             return string.Format("Pianeta: {0}\nMassa: {1}\nPosizione: {2}\nVelocità: {3}\nRaggio: {4}",
                                  p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
         }
+        #endregion
 
         #region pulsanti (tastiera)
         private void Form2_KeyDown(object sender, KeyEventArgs e)
