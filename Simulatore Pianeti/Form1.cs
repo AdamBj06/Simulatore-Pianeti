@@ -50,7 +50,7 @@ namespace Simulatore_Pianeti
             {//se l'utente non ha scelto un raggio, raggio=0
                 raggio = 0;
             }
-            else if(!double.TryParse(txt_raggio.Text, out raggio))
+            else if(double.TryParse(txt_raggio.Text, out raggio) == false)
             {
                 MessageBox.Show("Raggio non valido", "Errore");
                 return;
@@ -66,17 +66,17 @@ namespace Simulatore_Pianeti
                 colore = Color.White;
             }
 
-            if (!double.TryParse(txt_massa.Text, out double massa))
+            if (double.TryParse(txt_massa.Text, out double massa) == false)
             {
                 MessageBox.Show("Massa non valida", "Errore");
                 return;
             }
-            if (!Vettore.TryParse(txt_posizione.Text, out Vettore posizione))
+            if (Vettore.TryParse(txt_posizione.Text, out Vettore posizione) == false)
             {
                 MessageBox.Show("Posizione non valida", "Errore");
                 return;
             }
-            if (!Vettore.TryParse(txt_velocità.Text, out Vettore velocità))
+            if (Vettore.TryParse(txt_velocità.Text, out Vettore velocità) == false)
             {
                 MessageBox.Show("Velocità non valida", "Errore");
                 return;
@@ -101,6 +101,7 @@ namespace Simulatore_Pianeti
             txt_velocità.Clear();
             txt_massa.Clear();
             cmb_colore.SelectedIndex = -1;
+            cmb_pianetiSalvati.SelectedIndex = -1;
         }
 
         private void Btn_Play_Click(object sender, EventArgs e)//Inizia la simulazione
@@ -110,8 +111,8 @@ namespace Simulatore_Pianeti
             {
                 planetario.Pianeti.Add(p);
             }
+            lst_Pianeti.Items.Clear();
 
-            btn_play.Text = "Resume";
             Form2 Form2 = new Form2();//crea un secondo form
             Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
             this.Visible = false;//rende invisibile il primo form
@@ -129,9 +130,29 @@ namespace Simulatore_Pianeti
                 txt_massa.Text = p.Massa.ToString("0.0000E0");
                 cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
             }
+            cmb_pianetiSalvati.SelectedIndex = -1;
+        }
+
+        private void btn_Salva_Click(object sender, EventArgs e)
+        {
+            cmb_pianetiSalvati.Items.Add(lst_Pianeti.SelectedItem);
+        }
+
+        private void cmb_pianetiSalvati_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_pianetiSalvati.SelectedIndex != -1)
+            {
+                Pianeta p = (Pianeta)cmb_pianetiSalvati.Items[cmb_pianetiSalvati.SelectedIndex];
+                txt_raggio.Text = p.Raggio.ToString("0.0000E0");
+                txt_posizione.Text = p.Posizione.ToString("0.0000E0");
+                txt_velocità.Text = p.Velocità.ToString("0.0000E0");
+                txt_massa.Text = p.Massa.ToString("0.0000E0");
+                cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+            }
+            lst_Pianeti.SelectedIndex = -1;
         }
         #endregion
-        //in più
+
         #region Esempi preimpostati
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,14 +186,12 @@ namespace Simulatore_Pianeti
             {
                 btn_tema.Text = "Tema scuro";
 
-                BackColor = SystemColors.Control;
-                btn_tema.BackColor = SystemColors.Control;
-                btn_tema.ForeColor = SystemColors.ControlText;
+                this.BackColor = SystemColors.Control;
                 foreach (Control control in Controls)
                 {
-                    if(!(control is Button) && !(control is Label))
+                    if(control != btn_add && control != btn_remove && control != btn_play && !(control is Label))
                     {
-                        control.BackColor = SystemColors.Window;
+                        control.BackColor = SystemColors.Window;//il colore di default di windows
                         control.ForeColor = SystemColors.ControlText;
                     }
                     else if(control is Label)
@@ -188,12 +207,10 @@ namespace Simulatore_Pianeti
             {
                 btn_tema.Text = "Tema chiaro";
 
-                BackColor = Color.FromArgb(21, 32, 43);
-                btn_tema.BackColor = Color.FromArgb(25, 39, 52);
-                btn_tema.ForeColor = Color.White;
+                this.BackColor = Color.FromArgb(21, 32, 43);
                 foreach (Control control in Controls)
                 {
-                    if (!(control is Button) && !(control is TextBox))
+                    if (control != btn_add && control != btn_remove && control != btn_play && !(control is TextBox))
                     {
                         control.BackColor = Color.FromArgb(25, 39, 52);
                         control.ForeColor = Color.White;
