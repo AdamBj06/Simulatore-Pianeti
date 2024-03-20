@@ -45,6 +45,8 @@ namespace Simulatore_Pianeti
                 return;
             }
 
+            string nome = txt_nome.Text;
+
             double raggio;
             if (txt_raggio.Text == "")
             {//se l'utente non ha scelto un raggio, raggio=0
@@ -82,7 +84,15 @@ namespace Simulatore_Pianeti
                 return;
             }
 
-            Pianeta pianeta = new Pianeta(colore, raggio, massa, posizione, velocità);
+            Pianeta pianeta = new Pianeta(nome, colore, raggio, massa, posizione, velocità);
+            foreach (Pianeta p in lst_Pianeti.Items)
+            {
+                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                {
+                    MessageBox.Show("Pianeta già presente", "Errore");
+                    return;
+                }
+            }
             lst_Pianeti.Items.Add(pianeta);
 
             Clear();
@@ -96,12 +106,16 @@ namespace Simulatore_Pianeti
 
         private void Clear()
         {
+            txt_nome.Clear();
             txt_raggio.Clear();
             txt_posizione.Clear();
             txt_velocità.Clear();
             txt_massa.Clear();
             cmb_colore.SelectedIndex = -1;
             cmb_pianetiSalvati.SelectedIndex = -1;
+            //Cmb_esempi.SelectedIndex = -1;
+            btn_play.Text = "Play";
+            Refresh();
         }
 
         private void Btn_Play_Click(object sender, EventArgs e)//Inizia la simulazione
@@ -111,8 +125,8 @@ namespace Simulatore_Pianeti
             {
                 planetario.Pianeti.Add(p);
             }
-            lst_Pianeti.Items.Clear();
-
+            
+            btn_play.Text = "Resume";
             Form2 Form2 = new Form2();//crea un secondo form
             Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
             this.Visible = false;//rende invisibile il primo form
@@ -124,11 +138,7 @@ namespace Simulatore_Pianeti
             if(lst_Pianeti.SelectedIndex != -1)
             {
                 Pianeta p = (Pianeta)lst_Pianeti.Items[lst_Pianeti.SelectedIndex];
-                txt_raggio.Text = p.Raggio.ToString("0.0000E0");
-                txt_posizione.Text = p.Posizione.ToString("0.0000E0");
-                txt_velocità.Text = p.Velocità.ToString("0.0000E0");
-                txt_massa.Text = p.Massa.ToString("0.0000E0");
-                cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+                RiempiTextBox(p);
             }
             cmb_pianetiSalvati.SelectedIndex = -1;
         }
@@ -138,21 +148,32 @@ namespace Simulatore_Pianeti
             cmb_pianetiSalvati.Items.Add(lst_Pianeti.SelectedItem);
         }
 
+        private void btn_rimuovi_Click(object sender, EventArgs e)
+        {
+            cmb_pianetiSalvati.Items.Remove(cmb_pianetiSalvati.SelectedItem);
+        }
+
         private void cmb_pianetiSalvati_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmb_pianetiSalvati.SelectedIndex != -1)
             {
                 Pianeta p = (Pianeta)cmb_pianetiSalvati.Items[cmb_pianetiSalvati.SelectedIndex];
-                txt_raggio.Text = p.Raggio.ToString("0.0000E0");
-                txt_posizione.Text = p.Posizione.ToString("0.0000E0");
-                txt_velocità.Text = p.Velocità.ToString("0.0000E0");
-                txt_massa.Text = p.Massa.ToString("0.0000E0");
-                cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+                RiempiTextBox(p);
             }
             lst_Pianeti.SelectedIndex = -1;
         }
-        #endregion
 
+        private void RiempiTextBox(Pianeta p)
+        {
+            txt_nome.Text = p.Nome;
+            txt_raggio.Text = p.Raggio.ToString("0.0000E0");
+            txt_posizione.Text = p.Posizione.ToString("0.0000E0");
+            txt_velocità.Text = p.Velocità.ToString("0.0000E0");
+            txt_massa.Text = p.Massa.ToString("0.0000E0");
+            cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
+        }
+        #endregion
+        //in più
         #region Esempi preimpostati
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -162,19 +183,36 @@ namespace Simulatore_Pianeti
             switch (Cmb_esempi.SelectedIndex)//sistemare valori
             {
                 case 0://Sistema Sole e Terra
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
                     break;
                 case 1://Sistema Sole, Terra e Marte
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
-                    lst_Pianeti.Items.Add(new Pianeta(Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Marte", Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
                     break;
                 case 2://sistema solare
+                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    //mercurio
+                    //venere
+                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
+                    lst_Pianeti.Items.Add(new Pianeta("Marte", Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
+                    //giove
+                    //saturno
+                    //urano
+                    //nettuno
+                    //pluto, forse
+                    break;
+                case 3:
+                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    //alcuni meteoriti/asteroidi
                     break;
                 default:
                     break;
             }
+
+            btn_play.Text = "Play";
+            Refresh();
         }
         #endregion
         //in più
@@ -223,7 +261,6 @@ namespace Simulatore_Pianeti
         #endregion
         //in più
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
-        int xi, yi;
         bool inPos = false, inVel = false;
 
         private void txt_posizione_Enter(object sender, EventArgs e)
@@ -252,22 +289,25 @@ namespace Simulatore_Pianeti
             Pen nero = new Pen(Color.Black, 4);
             g.Clear(BackColor);//ripulisce il form quando neccessario
 
-            g.DrawLine(nero, 698, Height - 48, Width - 40, Height - 48);//asse x
-            g.DrawLine(nero, 698, Height - 48, 698, 20);//asse y
+            DisegnaPosizione();
+
+            g.DrawLine(nero, 748, Height - 48, Width - 30, Height - 48);//asse x
+            g.DrawLine(nero, 748, Height - 48, 748, 15);//asse y
         }
 
+        int xi, yi;
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             Graphics g = CreateGraphics();
             Brush sfondo = new SolidBrush(BackColor);
-            g.FillRectangle(sfondo, 700, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
+            g.FillRectangle(sfondo, 750, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
 
-            xi = e.X; yi = e.Y;
-            if (xi > 700 && yi < Height - 50)//se il click avviene nella parte del form permesssa
+            xi = e.X; yi = e.Y;//posizione del mouse
+            if (xi > 750 && yi < Height - 50)//se il click avviene nella parte del form permesssa
             {
                 if (inPos)
                 {
-                    txt_posizione.Text = new Vettore((xi - 700) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos finale - origine (pos iniziale)
+                    txt_posizione.Text = new Vettore((xi - 750) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos - origine (pos iniziale)
                     g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
                 }
             }
@@ -279,13 +319,22 @@ namespace Simulatore_Pianeti
             Pen nero = new Pen(Color.Black, 3);
 
             int xf = e.X; int yf = e.Y;
-            if (xi > 700 && yi < Height - 50 && xf > 700 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
+            if (xi > 750 && yi < Height - 50 && xf > 750 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
             {
                 if(inVel)
                 {
                     txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("0.0000E0");//pos finale - pos iniziale, in y invertito perchè siamo nel 4 quadrante
                     g.DrawLine(nero, xi, yi, xf, yf);
                 }
+            }
+        }
+
+        private void DisegnaPosizione()
+        {
+            Graphics g = CreateGraphics();
+            foreach(Pianeta p in lst_Pianeti.Items)
+            {
+                g.FillEllipse(new SolidBrush(p.Colore), (float)((p.Posizione.X / 1e9) + 750), (float)((-p.Posizione.Y / 1e9) + Height - 48), 10, 10);
             }
         }
         #endregion
