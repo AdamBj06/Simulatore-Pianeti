@@ -51,6 +51,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_nome = new System.Windows.Forms.TextBox();
             this.btn_rimuovi = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_Pianeti
@@ -311,12 +312,22 @@
             this.btn_rimuovi.UseVisualStyleBackColor = false;
             this.btn_rimuovi.Click += new System.EventHandler(this.btn_rimuovi_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(495, 411);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "label9";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(1284, 566);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_rimuovi);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_nome);
@@ -375,6 +386,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_nome;
         private System.Windows.Forms.Button btn_rimuovi;
+        private System.Windows.Forms.Label label9;
     }
 }
 

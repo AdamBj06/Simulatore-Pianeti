@@ -34,9 +34,8 @@ namespace Simulatore_Pianeti
 
         public static bool TryParse(string str, out Vettore v)
         {
-            double x; double y;
             string[] substr = str.Split(';');
-            if (substr.Length > 1 && double.TryParse(substr[0], out x) && double.TryParse(substr[1], out y))
+            if (substr.Length > 1 && double.TryParse(substr[0], out double x) && double.TryParse(substr[1], out double y))
             {
                 v = new Vettore(x, y);
                 return true;
