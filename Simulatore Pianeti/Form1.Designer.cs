@@ -62,7 +62,7 @@
             this.lst_Pianeti.Location = new System.Drawing.Point(11, 11);
             this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
-            this.lst_Pianeti.Size = new System.Drawing.Size(477, 910);
+            this.lst_Pianeti.Size = new System.Drawing.Size(477, 988);
             this.lst_Pianeti.TabIndex = 1;
             this.lst_Pianeti.SelectedIndexChanged += new System.EventHandler(this.lst_Pianeti_SelectedIndexChanged);
             // 
@@ -216,6 +216,9 @@
             this.Cmb_esempi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cmb_esempi.ForeColor = System.Drawing.Color.White;
             this.Cmb_esempi.FormattingEnabled = true;
+            this.Cmb_esempi.Items.AddRange(new object[] {
+            "Sistema Sole e Terra",
+            "Sistema Sole, Terra e Marte"});
             this.Cmb_esempi.Location = new System.Drawing.Point(496, 330);
             this.Cmb_esempi.Name = "Cmb_esempi";
             this.Cmb_esempi.Size = new System.Drawing.Size(237, 21);
@@ -235,7 +238,7 @@
             // 
             this.btn_tema.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
             this.btn_tema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tema.Location = new System.Drawing.Point(497, 374);
+            this.btn_tema.Location = new System.Drawing.Point(497, 366);
             this.btn_tema.Name = "btn_tema";
             this.btn_tema.Size = new System.Drawing.Size(83, 23);
             this.btn_tema.TabIndex = 18;
@@ -313,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(1284, 507);
+            this.ClientSize = new System.Drawing.Size(1284, 566);
             this.Controls.Add(this.btn_rimuovi);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_nome);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,7 @@ namespace Simulatore_Pianeti
         public Form1()
         {
             InitializeComponent();
-            //riempe le combobox
-            #region InitializeComboBoxes
+            #region Riempi la combobox dei colori
             foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema)
             {
                 Color color = Color.FromKnownColor(knownColor);
@@ -29,20 +29,48 @@ namespace Simulatore_Pianeti
                     cmb_colore.Items.Add(color);
                 }
             }
-
-            Cmb_esempi.Items.Add("Sistema Sole e Terra");
-            Cmb_esempi.Items.Add("Sistema Sole, Terra e Marte");
-            //altri esempi
             #endregion
         }
         
         #region impostazione
         private void Btn_Add_Click(object sender, EventArgs e)
         {
+            Pianeta pianeta = CreaPianeta();
+            foreach (Pianeta p in lst_Pianeti.Items)
+            {
+                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                {
+                    MessageBox.Show("Pianeta già presente", "Errore");
+                    return;
+                }
+            }
+            lst_Pianeti.Items.Add(pianeta);
+
+            Clear();
+        }
+
+        private void btn_Salva_Click(object sender, EventArgs e)
+        {
+            Pianeta pianeta = CreaPianeta();
+            foreach (Pianeta p in cmb_pianetiSalvati.Items)
+            {
+                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                {
+                    MessageBox.Show("Pianeta già presente", "Errore");
+                    return;
+                }
+            }
+            cmb_pianetiSalvati.Items.Add(pianeta);
+
+            Clear();
+        }
+
+        private Pianeta CreaPianeta()//crea il pianeta leggendo le textbox (il pulsante add)
+        {
             if (txt_massa.Text == "" && txt_posizione.Text == "" && txt_velocità.Text == "")
             {
                 MessageBox.Show("Un pianeta deve avere come minimo una massa, una posizione iniziale e una velocità iniziale", "Errore");
-                return;
+                return null;
             }
 
             string nome = txt_nome.Text;
@@ -52,10 +80,10 @@ namespace Simulatore_Pianeti
             {//se l'utente non ha scelto un raggio, raggio=0
                 raggio = 0;
             }
-            else if(double.TryParse(txt_raggio.Text, out raggio) == false)
+            else if (double.TryParse(txt_raggio.Text, out raggio) == false)
             {
                 MessageBox.Show("Raggio non valido", "Errore");
-                return;
+                return null;
             }
 
             Color colore;
@@ -71,37 +99,31 @@ namespace Simulatore_Pianeti
             if (double.TryParse(txt_massa.Text, out double massa) == false)
             {
                 MessageBox.Show("Massa non valida", "Errore");
-                return;
+                return null;
             }
             if (Vettore.TryParse(txt_posizione.Text, out Vettore posizione) == false)
             {
                 MessageBox.Show("Posizione non valida", "Errore");
-                return;
+                return null;
             }
             if (Vettore.TryParse(txt_velocità.Text, out Vettore velocità) == false)
             {
                 MessageBox.Show("Velocità non valida", "Errore");
-                return;
+                return null;
             }
 
-            Pianeta pianeta = new Pianeta(nome, colore, raggio, massa, posizione, velocità);
-            foreach (Pianeta p in lst_Pianeti.Items)
-            {
-                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
-                {
-                    MessageBox.Show("Pianeta già presente", "Errore");
-                    return;
-                }
-            }
-            lst_Pianeti.Items.Add(pianeta);
-
-            Clear();
+            return new Pianeta(nome, colore, raggio, massa, posizione, velocità);
         }
 
-        private void Btn_Remove_Click(object sender, EventArgs e)
+        private void Btn_Remove_Click(object sender, EventArgs e)//rimuove dalla listbox
         {
             lst_Pianeti.Items.Remove(lst_Pianeti.SelectedItem);
             Clear();
+        }
+
+        private void btn_rimuovi_Click(object sender, EventArgs e)//rimuove da pianeti salvati
+        {
+            cmb_pianetiSalvati.Items.Remove(cmb_pianetiSalvati.SelectedItem);
         }
 
         private void Clear()
@@ -139,18 +161,8 @@ namespace Simulatore_Pianeti
             {
                 Pianeta p = (Pianeta)lst_Pianeti.Items[lst_Pianeti.SelectedIndex];
                 RiempiTextBox(p);
+                cmb_pianetiSalvati.SelectedIndex = -1;
             }
-            cmb_pianetiSalvati.SelectedIndex = -1;
-        }
-
-        private void btn_Salva_Click(object sender, EventArgs e)
-        {
-            cmb_pianetiSalvati.Items.Add(lst_Pianeti.SelectedItem);
-        }
-
-        private void btn_rimuovi_Click(object sender, EventArgs e)
-        {
-            cmb_pianetiSalvati.Items.Remove(cmb_pianetiSalvati.SelectedItem);
         }
 
         private void cmb_pianetiSalvati_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,8 +171,8 @@ namespace Simulatore_Pianeti
             {
                 Pianeta p = (Pianeta)cmb_pianetiSalvati.Items[cmb_pianetiSalvati.SelectedIndex];
                 RiempiTextBox(p);
+                lst_Pianeti.SelectedIndex = -1;
             }
-            lst_Pianeti.SelectedIndex = -1;
         }
 
         private void RiempiTextBox(Pianeta p)
