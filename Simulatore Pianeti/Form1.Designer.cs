@@ -53,6 +53,7 @@
             this.btn_rimuovi = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lbl_info = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_Pianeti
@@ -61,7 +62,7 @@
             this.lst_Pianeti.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lst_Pianeti.ForeColor = System.Drawing.Color.White;
             this.lst_Pianeti.FormattingEnabled = true;
-            this.lst_Pianeti.Location = new System.Drawing.Point(11, 11);
+            this.lst_Pianeti.Location = new System.Drawing.Point(9, 11);
             this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
             this.lst_Pianeti.Size = new System.Drawing.Size(477, 988);
@@ -336,12 +337,24 @@
             this.label10.Text = "Ricorda: un pianeta deve avere almeno una\r\nmassa, una posizione iniziale e una ve" +
     "locità\r\ninziale. Il resto è facoltativo e si può anche\r\nlasciare vuoto.";
             // 
+            // lbl_info
+            // 
+            this.lbl_info.AutoSize = true;
+            this.lbl_info.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_info.Location = new System.Drawing.Point(501, 536);
+            this.lbl_info.Name = "lbl_info";
+            this.lbl_info.Size = new System.Drawing.Size(228, 41);
+            this.lbl_info.TabIndex = 28;
+            this.lbl_info.Text = "Per disegnare un vettore clicca una casella di\r\ntesto a scelta (posizione o veloc" +
+    "ità) e\r\nclicca/trascina nella zona delineata dalle rette.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
-            this.ClientSize = new System.Drawing.Size(1284, 566);
+            this.ClientSize = new System.Drawing.Size(1284, 679);
+            this.Controls.Add(this.lbl_info);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_rimuovi);
@@ -404,6 +417,7 @@
         private System.Windows.Forms.Button btn_rimuovi;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_info;
     }
 }
 
