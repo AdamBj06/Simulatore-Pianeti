@@ -73,7 +73,15 @@ namespace Simulatore_Pianeti
                 return null;
             }
 
-            string nome = txt_nome.Text;
+            string nome;
+            if(txt_nome.Text != "")
+            {
+                nome = txt_nome.Text;
+            }
+            else
+            {
+                nome = "p" + (lst_Pianeti.Items.Count + 1);
+            }
 
             double raggio;
             if (txt_raggio.Text == "")

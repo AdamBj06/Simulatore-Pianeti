@@ -98,19 +98,19 @@ namespace Simulatore_Pianeti
                 float yc = Height - (float)Math.Round(planetario.Pianeti[i].Posizione.Y / 1e9);//y del centro del pianeta
                 centri[i] = new PointF(xc, yc);//tutti i centri vengono salvati in un array che servirà dopo
                 float r = (float)(planetario.Pianeti[i].Raggio / 1e7);//raggio
-                if (r > 8)
+                if (r > 4)
                 {
                     float x = xc - r / 2;
                     float y = yc - r / 2;
                     g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, r, r);
                 }
-                else
+                    else
                 {
-                    float x = xc - 4;//r=8, r/2=4
-                    float y = yc - 4;
-                    g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, 8, 8);
+                    float x = xc - 2;//r=4, r/2=2
+                    float y = yc - 2;
+                    g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, 4, 4);
                 }
-            }
+        }
         }
         #endregion
         
@@ -135,11 +135,11 @@ namespace Simulatore_Pianeti
             for (int i = 0; i < centri.Length; i++)
             {
                 int r = (int)(planetario.Pianeti[i].Raggio / 1e7 * zoom);//raggio
-                if (r > 8 && DentroCerchio((int)centri[i].X, (int)centri[i].Y, r, e.X, e.Y))
+                if (r > 4 && DentroCerchio((int)centri[i].X, (int)centri[i].Y, r, e.X, e.Y))
                 {//controlla se il click è avvenuto dentro un pianeta
                     pianetaSelezionato = planetario.Pianeti[i];
                 }
-                else if (DentroCerchio((int)centri[i].X, (int)centri[i].Y, 8, e.X, e.Y))//r=8
+                else if (DentroCerchio((int)centri[i].X, (int)centri[i].Y, 4, e.X, e.Y))//r=4
                 {
                     pianetaSelezionato = planetario.Pianeti[i];
                 }
@@ -158,8 +158,8 @@ namespace Simulatore_Pianeti
 
         public string InformazioniPianeta(Pianeta p)//stampa le informazioni del pianeta
         {//(per adam) guardare Iformattable
-            return string.Format("Pianeta: {0}\nMassa: {1}\nPosizione: {2}\nVelocità: {3}\nRaggio: {4}",
-                                 p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
+            return string.Format("Pianeta: {0} ({1})\nMassa: {2}\nPosizione: {3}\nVelocità: {4}\nRaggio: {5}",
+                                 p.Nome, p.Colore.Name, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
         }
         #endregion
         

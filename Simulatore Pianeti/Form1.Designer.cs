@@ -52,6 +52,7 @@
             this.txt_nome = new System.Windows.Forms.TextBox();
             this.btn_rimuovi = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lst_Pianeti
@@ -315,11 +316,25 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(495, 411);
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Location = new System.Drawing.Point(505, 410);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(215, 54);
             this.label9.TabIndex = 26;
-            this.label9.Text = "label9";
+            this.label9.Text = "Attenzione: se il raggio e minore di 4*10^7m\r\nallora verrà disegnato con una gran" +
+    "dezza\r\nfissa di 4 pixel (4*10^7m) per evitare che sia\r\ntroppo piccolo da non ess" +
+    "ere visibile.";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(505, 469);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(217, 54);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Ricorda: un pianeta deve avere almeno una\r\nmassa, una posizione iniziale e una ve" +
+    "locità\r\ninziale. Il resto è facoltativo e si può anche\r\nlasciare vuoto.";
             // 
             // Form1
             // 
@@ -327,6 +342,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(1284, 566);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btn_rimuovi);
             this.Controls.Add(this.label8);
@@ -387,6 +403,7 @@
         private System.Windows.Forms.TextBox txt_nome;
         private System.Windows.Forms.Button btn_rimuovi;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
