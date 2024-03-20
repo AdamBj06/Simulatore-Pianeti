@@ -192,19 +192,21 @@ namespace Simulatore_Pianeti
             lst_Pianeti.Items.Clear();
             double xs = 1e9d * 453.3d;//posizione del sole
             double ys = 1e9d * 382.5d;
+            Pianeta Sole = new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d));
+
             switch (Cmb_esempi.SelectedIndex)//sistemare valori
             {
                 case 0://Sistema Sole e Terra
-                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(Sole);
                     lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
                     break;
                 case 1://Sistema Sole, Terra e Marte
-                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(Sole);
                     lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
                     lst_Pianeti.Items.Add(new Pianeta("Marte", Color.Red, 3.3895e6d, 6.39e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.413e4d)));
                     break;
                 case 2://sistema solare
-                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                    lst_Pianeti.Items.Add(Sole);
                     //mercurio
                     //venere
                     lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378e6d, 6e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.876e4d)));
