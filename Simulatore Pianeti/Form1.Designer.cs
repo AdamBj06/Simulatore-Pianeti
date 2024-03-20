@@ -60,7 +60,7 @@
             this.lst_Pianeti.ForeColor = System.Drawing.Color.White;
             this.lst_Pianeti.FormattingEnabled = true;
             this.lst_Pianeti.Location = new System.Drawing.Point(11, 11);
-            this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lst_Pianeti.Margin = new System.Windows.Forms.Padding(2);
             this.lst_Pianeti.Name = "lst_Pianeti";
             this.lst_Pianeti.Size = new System.Drawing.Size(477, 910);
             this.lst_Pianeti.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.btn_play.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_play.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_play.Location = new System.Drawing.Point(650, 164);
-            this.btn_play.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_play.Margin = new System.Windows.Forms.Padding(2);
             this.btn_play.Name = "btn_play";
             this.btn_play.Size = new System.Drawing.Size(83, 68);
             this.btn_play.TabIndex = 0;
@@ -86,7 +86,7 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.Location = new System.Drawing.Point(494, 164);
-            this.btn_add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(68, 68);
             this.btn_add.TabIndex = 2;
@@ -100,7 +100,7 @@
             this.btn_remove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_remove.Location = new System.Drawing.Point(566, 164);
-            this.btn_remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_remove.Margin = new System.Windows.Forms.Padding(2);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(80, 68);
             this.btn_remove.TabIndex = 3;
@@ -113,7 +113,7 @@
             this.txt_posizione.BackColor = System.Drawing.Color.White;
             this.txt_posizione.ForeColor = System.Drawing.Color.Black;
             this.txt_posizione.Location = new System.Drawing.Point(587, 81);
-            this.txt_posizione.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_posizione.Margin = new System.Windows.Forms.Padding(2);
             this.txt_posizione.Name = "txt_posizione";
             this.txt_posizione.Size = new System.Drawing.Size(146, 20);
             this.txt_posizione.TabIndex = 4;
@@ -125,7 +125,7 @@
             this.txt_massa.BackColor = System.Drawing.Color.White;
             this.txt_massa.ForeColor = System.Drawing.Color.Black;
             this.txt_massa.Location = new System.Drawing.Point(587, 57);
-            this.txt_massa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_massa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_massa.Name = "txt_massa";
             this.txt_massa.Size = new System.Drawing.Size(146, 20);
             this.txt_massa.TabIndex = 5;
@@ -135,7 +135,7 @@
             this.txt_velocità.BackColor = System.Drawing.Color.White;
             this.txt_velocità.ForeColor = System.Drawing.Color.Black;
             this.txt_velocità.Location = new System.Drawing.Point(587, 105);
-            this.txt_velocità.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_velocità.Margin = new System.Windows.Forms.Padding(2);
             this.txt_velocità.Name = "txt_velocità";
             this.txt_velocità.Size = new System.Drawing.Size(146, 20);
             this.txt_velocità.TabIndex = 6;
@@ -183,7 +183,7 @@
             this.txt_raggio.BackColor = System.Drawing.Color.White;
             this.txt_raggio.ForeColor = System.Drawing.Color.Black;
             this.txt_raggio.Location = new System.Drawing.Point(587, 33);
-            this.txt_raggio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_raggio.Margin = new System.Windows.Forms.Padding(2);
             this.txt_raggio.Name = "txt_raggio";
             this.txt_raggio.Size = new System.Drawing.Size(146, 20);
             this.txt_raggio.TabIndex = 12;
@@ -256,7 +256,7 @@
             // 
             this.btn_Salva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
             this.btn_Salva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Salva.Location = new System.Drawing.Point(534, 284);
+            this.btn_Salva.Location = new System.Drawing.Point(534, 285);
             this.btn_Salva.Name = "btn_Salva";
             this.btn_Salva.Size = new System.Drawing.Size(62, 23);
             this.btn_Salva.TabIndex = 21;
@@ -300,7 +300,7 @@
             // 
             this.btn_rimuovi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(39)))), ((int)(((byte)(52)))));
             this.btn_rimuovi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rimuovi.Location = new System.Drawing.Point(625, 284);
+            this.btn_rimuovi.Location = new System.Drawing.Point(625, 285);
             this.btn_rimuovi.Name = "btn_rimuovi";
             this.btn_rimuovi.Size = new System.Drawing.Size(62, 23);
             this.btn_rimuovi.TabIndex = 25;

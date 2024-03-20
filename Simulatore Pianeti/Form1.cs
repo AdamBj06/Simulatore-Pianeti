@@ -35,7 +35,7 @@ namespace Simulatore_Pianeti
             //altri esempi
             #endregion
         }
-        //obbligatrio
+        
         #region impostazione
         private void Btn_Add_Click(object sender, EventArgs e)
         {
@@ -173,7 +173,7 @@ namespace Simulatore_Pianeti
             cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
         }
         #endregion
-        //in più
+        
         #region Esempi preimpostati
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -215,7 +215,7 @@ namespace Simulatore_Pianeti
             Refresh();
         }
         #endregion
-        //in più
+        
         #region Tema
         bool TemaScuro = true;
         private void btn_tema_Click(object sender, EventArgs e)
@@ -259,7 +259,7 @@ namespace Simulatore_Pianeti
             }
         }
         #endregion
-        //in più
+        
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
         bool inPos = false, inVel = false;
 

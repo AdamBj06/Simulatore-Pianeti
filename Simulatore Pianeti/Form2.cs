@@ -27,7 +27,7 @@ namespace Simulatore_Pianeti
             planetario.DeltaT = 20d;//ricorda: più è alto il deltaT meno è precisa la simulazione
             cronometro_fps.Start();
         }
-        //semi-obbligatrio
+        
         #region velocità di simulazione
         private void trackBar_speed_Scroll(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace Simulatore_Pianeti
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + planetario.DeltaT.ToString(".00") + "h/tick";
         }
         #endregion
-        //obbligatrio
+        
         #region Simulazione
         public Pianeta pianetaSelezionato;//pianeta di cui far vedere le info
         public bool mousePressed;//vero se il tasto centrale del mouse è cliccato
@@ -113,7 +113,7 @@ namespace Simulatore_Pianeti
             }
         }
         #endregion
-        //in più
+        
         #region InformazioniPianeta
         private void Form2_MouseClick(object sender, MouseEventArgs e)
         {
@@ -162,7 +162,7 @@ namespace Simulatore_Pianeti
                                  p.Colore, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
         }
         #endregion
-        //in più
+        
         #region pulsanti (tastiera)
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -206,7 +206,7 @@ namespace Simulatore_Pianeti
             }
         }
         #endregion
-        //semi-obbligatrio
+        
         #region spostamento
         private void Form2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -227,7 +227,7 @@ namespace Simulatore_Pianeti
             }
         }
         #endregion
-        //semi-obbligatrio
+        
         #region zoom
         //algoritmo di zoom: https://stackoverflow.com/questions/37262282/zooming-graphics-based-on-current-mouse-position
         private void Form2_MouseWheel(object sender, MouseEventArgs e)
