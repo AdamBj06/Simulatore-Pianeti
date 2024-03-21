@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Simulatore_Pianeti
 {
-    public class Vettore
+    public class Vettore : IFormattable
     {
         public double X { get; set; }
         public double Y { get; set; }
