@@ -193,11 +193,11 @@ namespace Simulatore_Pianeti
                 timer1_Tick(sender, e);
                 planetario.DeltaT = -planetario.DeltaT / 20;
             }
-            if (e.KeyCode == Keys.OemPeriod && timer1.Enabled == false)//avanti 1 tick [,]
+            if (e.KeyCode == Keys.OemPeriod && timer1.Enabled == false)//avanti 1 tick [.]
             {
                 timer1_Tick(sender, e);
             }
-            if (e.KeyCode == Keys.Oemcomma && timer1.Enabled == false)//indietro 1 tick [.]
+            if (e.KeyCode == Keys.Oemcomma && timer1.Enabled == false)//indietro 1 tick [,]
             {
                 planetario.DeltaT = -planetario.DeltaT;//inverte deltaT
                 timer1_Tick(sender, e);
