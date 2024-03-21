@@ -249,7 +249,7 @@ namespace Simulatore_Pianeti
                 btn_tema.Text = "Tema scuro";
 
                 this.BackColor = SystemColors.Control;//il colore di default di windows
-                foreach (Control control in Controls)//un controllo e per esempio textbox, listbox, label ecc.
+                foreach (Control control in Controls)//un controllo è per esempio textbox, listbox, label ecc.
                 {//cambia il colore di tutti i controlli nel form tranne i pulsanti add, play e remove
                     if(control != btn_add && control != btn_remove && control != btn_play && !(control is Label))
                     {
@@ -257,7 +257,7 @@ namespace Simulatore_Pianeti
                         control.ForeColor = SystemColors.ControlText;
                     }
                     else if(control is Label)
-                    {
+                    {//label separati pk hanno colore diverso
                         control.BackColor = SystemColors.Control;
                         control.ForeColor = SystemColors.ControlText;
                     }
@@ -286,7 +286,6 @@ namespace Simulatore_Pianeti
         
         #region "disegno" di vettori trascinando (velocità) o cliccando (posizione)
         bool inPos = false, inVel = false;
-
         private void txt_posizione_Enter(object sender, EventArgs e)
         {
             inPos = true;
@@ -344,11 +343,11 @@ namespace Simulatore_Pianeti
             Pen nero = new Pen(Color.Black, 3);
 
             int xf = e.X; int yf = e.Y;
-            if (xi > 790 && yi < Height - 50 && xf > 780 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
+            if (xi > 790 && yi < Height - 50 && xf > 790 && yf < Height - 50)//se il click e il rilascio del click avviengono nella parte del form permesssa
             {
                 if(inVel)
                 {
-                    txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("E4");//pos finale - pos iniziale, in y invertito perchè siamo nel 4 quadrante
+                    txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("E4");//pos finale - pos iniziale, in y invertito perchè siamo nel 4° quadrante
                     g.DrawLine(nero, xi, yi, xf, yf);
                 }
             }
