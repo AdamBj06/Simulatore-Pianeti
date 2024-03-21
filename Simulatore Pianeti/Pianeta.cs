@@ -8,7 +8,7 @@ using Vettori;
 
 namespace Simulatore_Pianeti
 {
-    internal class Pianeta
+    public class Pianeta
     {
         public Color Colore { get; set; }
         public double Massa { get; set; }
@@ -48,6 +48,11 @@ namespace Simulatore_Pianeti
             Massa = m;
             Posizione = pos;
             Velocità = v;
+        }
+
+        public override string ToString()
+        {
+            return $"Massa: {Massa}; Posizione in.: {Posizione}; Velocità in. {Velocità}";
         }
     }
 }
