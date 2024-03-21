@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vettori
+namespace Simulatore_Pianeti
 {
-    public class Vettore
+    public class Vettore : IFormattable
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -16,14 +17,32 @@ namespace Vettori
             X = x; Y = y;
         }
 
-        public string ToString(string format)
-        {
-            return string.Format("{0};{1}", X.ToString(format), Y.ToString(format));
-        }
-
+        //Il prof ha suggerito di usare Iformattable: https://learn.microsoft.com/en-us/dotnet/api/system.iformattable?view=net-8.0
         public override string ToString()
         {
-            return string.Format("{0};{1}", X, Y);
+            return this.ToString("G", CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format)
+        {
+            return this.ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format, IFormatProvider provider)
+        {
+            if (String.IsNullOrEmpty(format)) format = "G";
+            if (provider == null) provider = CultureInfo.CurrentCulture;
+
+            switch (format.ToUpperInvariant())
+            {
+                case "G":
+                case "E3":
+                    return $"{X:0.000E0};{Y:0.000E0}";
+                case "E4":
+                    return $"{X:0.0000E0};{Y:0.0000E0}";
+                default:
+                    throw new FormatException(String.Format("The {0} format string is not supported.", format));
+            }
         }
 
         public static Vettore Parse(string str)
@@ -34,9 +53,8 @@ namespace Vettori
 
         public static bool TryParse(string str, out Vettore v)
         {
-            double x; double y;
             string[] substr = str.Split(';');
-            if (substr.Length > 1 && double.TryParse(substr[0], out x) && double.TryParse(substr[1], out y))
+            if (substr.Length > 1 && double.TryParse(substr[0], out double x) && double.TryParse(substr[1], out double y))
             {
                 v = new Vettore(x, y);
                 return true;
