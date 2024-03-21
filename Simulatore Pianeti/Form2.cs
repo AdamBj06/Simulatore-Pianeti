@@ -263,6 +263,7 @@ namespace Simulatore_Pianeti
         #endregion
     }
 }
+//non importante:
 //else if (planetario.Pianeti[i].Nome == "Luna")
 //{
 //    float x = xc - 1;

@@ -9,7 +9,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Simulatore_Pianeti
 {
@@ -359,4 +358,5 @@ namespace Simulatore_Pianeti
         #endregion
     }
 }
+//non importante:
 //lst_Pianeti.Items.Add(new Pianeta("Luna", Color.White, 1.7e6, 7.342e22, new Vettore(Terra.Posizione.X + 4.055e8, ys), new Vettore(0, Terra.Velocità.Y + 9.64e2d)));
