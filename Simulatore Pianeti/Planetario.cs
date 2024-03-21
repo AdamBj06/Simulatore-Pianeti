@@ -11,6 +11,10 @@ namespace Simulatore_Pianeti
         public const double G = 6.673e-11d;
         public double DeltaT { get; set; }
         public List<Pianeta> Pianeti { get; set; }
+        public Planetario()
+        {
+            Pianeti = new List<Pianeta>();
+        }
         public void Move()
         {
             foreach (Pianeta p in Pianeti)
