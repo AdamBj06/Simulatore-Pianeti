@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Simulatore_Pianeti
 {
@@ -80,7 +81,7 @@ namespace Simulatore_Pianeti
 
             string nome;
             if(txt_nome.Text == "")
-            {
+            {//se l'utente non ha scelto un nome, nome=p1, p2, p3 ecc.
                 nome = "p" + (lst_Pianeti.Items.Count + 1);
             }
             else
@@ -100,13 +101,13 @@ namespace Simulatore_Pianeti
             }
 
             Color colore;
-            if (cmb_colore.SelectedIndex != -1)
-            {//se l'utente ha scelto un colore, metti quel colore
-                colore = (Color)cmb_colore.SelectedItem;
+            if (cmb_colore.SelectedIndex == -1)
+            {//se l'utente non ha scelto un colore, metti bianco
+                colore = Color.White;
             }
             else
-            {//se no metti bianco
-                colore = Color.White;
+            {
+                colore = (Color)cmb_colore.SelectedItem;
             }
 
             if (double.TryParse(txt_massa.Text, out double massa) == false)
