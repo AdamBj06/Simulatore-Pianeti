@@ -31,7 +31,7 @@ namespace Simulatore_Pianeti
         #region velocità di simulazione
         private void trackBar_speed_Scroll(object sender, EventArgs e)
         {
-            planetario.DeltaT = trackBar_speed.Value;//i valori sono tra -220 e +220
+            planetario.DeltaT = trackBar_speed.Value;//i valori sono tra -220 e +220, quello iniziale è 36 (deltaT)
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + planetario.DeltaT.ToString(".00") + "h/tick";
         }
         #endregion
@@ -60,7 +60,7 @@ namespace Simulatore_Pianeti
             //
 
             deltaMouseX = MousePosition.X - mouseX;//pos finale - pos iniziale
-            deltaMouseY = mouseY - MousePosition.Y;//idem ma invertito perchè siamo nel 4 quadrante
+            deltaMouseY = mouseY - MousePosition.Y;//idem ma invertito perchè siamo nel 4° quadrante
             if (mousePressed)
             {
                 foreach(Pianeta p in planetario.Pianeti)//trasla i pianeti
@@ -75,7 +75,7 @@ namespace Simulatore_Pianeti
 
         public float zoom = 1.0f;
         public float traslazioneX = 0, traslazioneY = 0;//traslazione in base allo zoom
-        public Matrix transformMatrix;//per salva le trasformazioni in una matrice; https://stackoverflow.com/questions/20628979/actual-coordinate-after-scaletransfrom
+        public Matrix transformMatrix;//per salvare le trasformazioni in una matrice; https://stackoverflow.com/questions/20628979/actual-coordinate-after-scaletransfrom
         public PointF[] centri;//array di punti (in float)
         private void Form2_Paint(object sender, PaintEventArgs e)
         {
@@ -91,13 +91,13 @@ namespace Simulatore_Pianeti
             g.TranslateTransform(traslazioneX, traslazioneY);//trasla in base allo zoom
             transformMatrix = g.Transform;//salva le trasformazioni in una matrice
 
-            centri = new PointF[planetario.Pianeti.Count];//crea l'array grande quanto il numero di pianeti presenti
-            for (int i = 0; i < centri.Length; i++)//disegna tutti i pianeti/stelle
+            centri = new PointF[planetario.Pianeti.Count];
+            for (int i = 0; i < centri.Length; i++)//disegna
             {
-                float xc = (float)Math.Round(planetario.Pianeti[i].Posizione.X / 2e8);//x del centro del pianeta
-                float yc = Height - (float)Math.Round(planetario.Pianeti[i].Posizione.Y / 2e8);//y del centro del pianeta
-                centri[i] = new PointF(xc, yc);//tutti i centri vengono salvati in un array che servirà dopo
-                float r = (float)(planetario.Pianeti[i].Raggio / 5e6);//raggio
+                float xc = (float)Math.Round(planetario.Pianeti[i].Posizione.X / 2e8);
+                float yc = Height - (float)Math.Round(planetario.Pianeti[i].Posizione.Y / 2e8);
+                centri[i] = new PointF(xc, yc);
+                float r = (float)(planetario.Pianeti[i].Raggio / 5e6);
                 if (r > 6)
                 {
                     float x = xc - r / 2;
@@ -134,7 +134,7 @@ namespace Simulatore_Pianeti
             }
             for (int i = 0; i < centri.Length; i++)
             {
-                int r = (int)(planetario.Pianeti[i].Raggio / 5e6 * zoom);//raggio
+                int r = (int)(planetario.Pianeti[i].Raggio / 5e6 * zoom);
                 if (r > 6 && DentroCerchio((int)centri[i].X, (int)centri[i].Y, r, e.X, e.Y))
                 {//controlla se il click è avvenuto dentro un pianeta
                     pianetaSelezionato = planetario.Pianeti[i];
@@ -147,11 +147,11 @@ namespace Simulatore_Pianeti
 
             if (pianetaSelezionato != null)
             {
-                label.Text = InformazioniPianeta(pianetaSelezionato);//stampa le informazioni del pianeta nella label in alto a sinistra
+                label.Text = InformazioniPianeta(pianetaSelezionato);
             }
         }
 
-        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)//controlla se la posizione (x;y) è dentro il cerchio
+        public static bool DentroCerchio(int xc, int yc, int r, int x, int y)//controlla se la posizione x;y è dentro il cerchio
         {
             return (xc - x) * (xc - x) + (yc - y) * (yc - y) <= r * r;
         }
@@ -199,9 +199,9 @@ namespace Simulatore_Pianeti
             }
             if (e.KeyCode == Keys.Oemcomma && timer1.Enabled == false)//indietro 1 tick [,]
             {
-                planetario.DeltaT = -planetario.DeltaT;//inverte deltaT
+                planetario.DeltaT = -planetario.DeltaT;
                 timer1_Tick(sender, e);
-                planetario.DeltaT = -planetario.DeltaT;//reinverte deltaT (torna normale)
+                planetario.DeltaT = -planetario.DeltaT;
             }
         }
         #endregion
@@ -229,7 +229,7 @@ namespace Simulatore_Pianeti
         
         #region zoom
         //algoritmo di zoom: https://stackoverflow.com/questions/37262282/zooming-graphics-based-on-current-mouse-position
-        private void Form2_MouseWheel(object sender, MouseEventArgs e)
+        private void Form2_MouseWheel(object sender, MouseEventArgs e)//adam
         {
             float mx0, my0;
             scr2obj(out mx0, out my0, e.X, e.Y);
