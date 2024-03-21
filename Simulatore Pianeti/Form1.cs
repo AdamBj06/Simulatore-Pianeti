@@ -324,8 +324,8 @@ namespace Simulatore_Pianeti
         {
             Graphics g = CreateGraphics();
             Brush sfondo = new SolidBrush(BackColor);
-            DisegnaPosizione();
             g.FillRectangle(sfondo, 790, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
+            DisegnaPosizione();
 
             xi = e.X; yi = e.Y;//posizione del mouse
             if (xi > 790 && yi < Height - 50)//se il click avviene nella parte del form permesssa
