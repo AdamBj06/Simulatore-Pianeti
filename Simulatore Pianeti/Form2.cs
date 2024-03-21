@@ -24,10 +24,6 @@ namespace Simulatore_Pianeti
         {
             InitializeComponent();
             this.MouseWheel += new MouseEventHandler(Form2_MouseWheel);
-            /*foreach(Pianeta p in planetario.Pianeti)
-            {
-                p.Scia = new List<Point>();
-            }*/
             planetario.DeltaT = 20d;
             cronometro_fps.Start();
         }
@@ -35,7 +31,6 @@ namespace Simulatore_Pianeti
         public Pianeta pianeta;
         public bool mousePressed;
         public int mouseX, mouseY, mouseX2, mouseY2;
-        //public int nTick = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
             for (int x = 0; x <= velocita; x++)
@@ -68,7 +63,6 @@ namespace Simulatore_Pianeti
             }
         }
 
-        //public bool mostrascia = false;
         public float zoom = 1.0f;
         public float traslazioneX = 0, traslazioneY = 0;
         private void Form2_Paint(object sender, PaintEventArgs e)
@@ -98,17 +92,6 @@ namespace Simulatore_Pianeti
                     y = Height - (float)Math.Round(p.Posizione.Y / 1e9 - 4);
                     g.FillEllipse(new SolidBrush(p.Colore), x, y, 8, 8);
                 }
-
-                /*nTick++;
-                if (mostrascia && nTick == 5)
-                {
-                    p.Scia.Add(new Point((int)Math.Round(p.Posizione.X / 1e9), Height - (int)Math.Round(p.Posizione.Y / 1e9)));
-                    foreach (Point pt in p.Scia)
-                    {
-                        g.FillEllipse(Brushes.White, pt.X, pt.Y, 4, 4);
-                    }
-                    nTick = 0;
-                }*/
             }
         }
 
@@ -120,18 +103,6 @@ namespace Simulatore_Pianeti
                 Owner.Visible = true;
                 Close();
             }
-            /*//mostra la scia
-            if(e.KeyCode == Keys.S)
-            {
-                if (mostrascia)
-                {
-                    mostrascia = false;
-                }
-                else
-                {
-                    mostrascia = true;
-                }
-            }*/
             //stop/start
             if (e.KeyCode == Keys.Space && timer1.Enabled == true)
             {
