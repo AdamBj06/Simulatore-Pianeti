@@ -24,14 +24,14 @@ namespace Simulatore_Pianeti
         {
             InitializeComponent();
             MouseWheel += new MouseEventHandler(Form2_MouseWheel);//aggiunge l'evento che riconosce quando si scrolla col mouse
-            planetario.DeltaT = 20d;//ricorda: più è alto il deltaT meno è precisa la simulazione
+            planetario.DeltaT = 36d;//ricorda: più è alto il deltaT meno è precisa la simulazione
             cronometro_fps.Start();
         }
         
         #region velocità di simulazione
         private void trackBar_speed_Scroll(object sender, EventArgs e)
         {
-            planetario.DeltaT = trackBar_speed.Value;//i valori sono tra -200 e +200
+            planetario.DeltaT = trackBar_speed.Value;//i valori sono tra -220 e +220
             lbl_speed.Text = (planetario.DeltaT * 1.66666).ToString(".00") + "g/s; " + planetario.DeltaT.ToString(".00") + "h/tick";
         }
         #endregion
@@ -42,8 +42,8 @@ namespace Simulatore_Pianeti
         public int mouseX, mouseY, deltaMouseX, deltaMouseY;//posizioni iniziali del mouse; distanza da pos in. e pos f.
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int x = 0; x <= 3600; x++)
-            {//il move avvine 3600 volte per velocizzare la simulazione senza perdere precisione
+            for (int x = 0; x <= 2000; x++)
+            {//il move avvine 2000 volte per velocizzare la simulazione senza perdere precisione
                 planetario.Move();
             }
 
@@ -83,7 +83,7 @@ namespace Simulatore_Pianeti
             trackBar_speed.Location = new Point(ClientSize.Width - trackBar_speed.Width, ClientSize.Height - trackBar_speed.Height);
             lbl_speed.Location = new Point(ClientSize.Width - lbl_speed.Width -20, trackBar_speed.Location.Y - lbl_speed.Height - 4);
             lbl_fps.Location = new Point(ClientSize.Width - lbl_fps.Width - 20, 10);
-            lbl_legenda.Location = new Point(12, ClientSize.Height - lbl_legenda.Height - 6);
+            lbl_legenda.Location = new Point(8, ClientSize.Height - lbl_legenda.Height - 6);
             //
 
             Graphics g = CreateGraphics();
@@ -94,23 +94,23 @@ namespace Simulatore_Pianeti
             centri = new PointF[planetario.Pianeti.Count];//crea l'array grande quanto il numero di pianeti presenti
             for (int i = 0; i < centri.Length; i++)//disegna tutti i pianeti/stelle
             {
-                float xc = (float)Math.Round(planetario.Pianeti[i].Posizione.X / 1e9);//x del centro del pianeta
-                float yc = Height - (float)Math.Round(planetario.Pianeti[i].Posizione.Y / 1e9);//y del centro del pianeta
+                float xc = (float)Math.Round(planetario.Pianeti[i].Posizione.X / 2e8);//x del centro del pianeta
+                float yc = Height - (float)Math.Round(planetario.Pianeti[i].Posizione.Y / 2e8);//y del centro del pianeta
                 centri[i] = new PointF(xc, yc);//tutti i centri vengono salvati in un array che servirà dopo
-                float r = (float)(planetario.Pianeti[i].Raggio / 1e7);//raggio
-                if (r > 4)
+                float r = (float)(planetario.Pianeti[i].Raggio / 5e6);//raggio
+                if (r > 6)
                 {
                     float x = xc - r / 2;
                     float y = yc - r / 2;
                     g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, r, r);
                 }
-                    else
+                else
                 {
-                    float x = xc - 2;//r=4, r/2=2
-                    float y = yc - 2;
-                    g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, 4, 4);
+                    float x = xc - 3;//r=6, r/2=3
+                    float y = yc - 3;
+                    g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, 6, 6);
                 }
-        }
+            }
         }
         #endregion
         
@@ -134,12 +134,12 @@ namespace Simulatore_Pianeti
             }
             for (int i = 0; i < centri.Length; i++)
             {
-                int r = (int)(planetario.Pianeti[i].Raggio / 1e7 * zoom);//raggio
-                if (r > 4 && DentroCerchio((int)centri[i].X, (int)centri[i].Y, r, e.X, e.Y))
+                int r = (int)(planetario.Pianeti[i].Raggio / 5e6 * zoom);//raggio
+                if (r > 6 && DentroCerchio((int)centri[i].X, (int)centri[i].Y, r, e.X, e.Y))
                 {//controlla se il click è avvenuto dentro un pianeta
                     pianetaSelezionato = planetario.Pianeti[i];
                 }
-                else if (DentroCerchio((int)centri[i].X, (int)centri[i].Y, 4, e.X, e.Y))//r=4
+                else if (DentroCerchio((int)centri[i].X, (int)centri[i].Y, 6, e.X, e.Y))//r=6
                 {
                     pianetaSelezionato = planetario.Pianeti[i];
                 }
@@ -263,3 +263,9 @@ namespace Simulatore_Pianeti
         #endregion
     }
 }
+//else if (planetario.Pianeti[i].Nome == "Luna")
+//{
+//    float x = xc - 1;
+//    float y = yc - 1;
+//    g.FillEllipse(new SolidBrush(planetario.Pianeti[i].Colore), x, y, 2, 2);
+//}

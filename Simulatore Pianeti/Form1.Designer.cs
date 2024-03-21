@@ -221,7 +221,8 @@
             this.Cmb_esempi.FormattingEnabled = true;
             this.Cmb_esempi.Items.AddRange(new object[] {
             "Sistema Sole e Terra",
-            "Sistema Sole, Terra e Marte"});
+            "Sistema Sole, Terra e Marte",
+            "Sistema Solare (intero)"});
             this.Cmb_esempi.Location = new System.Drawing.Point(496, 330);
             this.Cmb_esempi.Name = "Cmb_esempi";
             this.Cmb_esempi.Size = new System.Drawing.Size(237, 21);
@@ -322,8 +323,8 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(215, 54);
             this.label9.TabIndex = 26;
-            this.label9.Text = "Attenzione: se il raggio e minore di 4*10^7m\r\nallora verrà disegnato con una gran" +
-    "dezza\r\nfissa di 4 pixel (4*10^7m) per evitare che sia\r\ntroppo piccolo da non ess" +
+            this.label9.Text = "Attenzione: se il raggio e minore di 3*10^7m\r\nallora verrà disegnato con una gran" +
+    "dezza\r\nfissa di 6 pixel (3*10^7m) per evitare che sia\r\ntroppo piccolo da non ess" +
     "ere visibile.";
             // 
             // label10

@@ -198,36 +198,33 @@ namespace Simulatore_Pianeti
         private void Cmb_esempi_SelectedIndexChanged(object sender, EventArgs e)//valori presi da wikipedia
         {
             lst_Pianeti.Items.Clear();
-            double xs = 1e9d * 453.3d;//posizione del sole
-            double ys = 1e9d * 382.5d;
-            Pianeta Sole = new Pianeta("Sole", Color.Yellow, 6.955e8d, 1.9891e30d, new Vettore(xs, ys), new Vettore(0d, 0d));
-
+            double xs = 2e8d * 453.3d;//posizione del sole
+            double ys = 2e8d * 382.5d;
+            lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 6.955e8d, 1.9891e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
+                                              //"nome", colore, raggio, massa, posizione all'afelio (xs + afelio), velocità all'afelio (vel. min.);
+            Pianeta Terra = new Pianeta("Terra", Color.Cyan, 6.378137e6d, 5.9726e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.9291e4d));
+            Pianeta Marte = new Pianeta("Marte", Color.Red, 3.40245e6d, 6.4185e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.1972e4d));
             switch (Cmb_esempi.SelectedIndex)//sistemare valori
             {
                 case 0://Sistema Sole e Terra
-                    lst_Pianeti.Items.Add(Sole);
-                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378137e6d, 5.9726e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.9291e4d)));
+                    lst_Pianeti.Items.Add(Terra);
                     break;
                 case 1://Sistema Sole, Terra e Marte
-                    lst_Pianeti.Items.Add(Sole);
-                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378137e6d, 5.9726e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.9291e4d)));
-                    lst_Pianeti.Items.Add(new Pianeta("Marte", Color.Red, 3.40245e6d, 6.4185e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.1972e4d)));
+                    lst_Pianeti.Items.Add(Terra);
+                    lst_Pianeti.Items.Add(Marte);
                     break;
                 case 2://sistema solare
-                    lst_Pianeti.Items.Add(Sole);
-                    //mercurio
-                    //venere
-                    lst_Pianeti.Items.Add(new Pianeta("Terra", Color.Cyan, 6.378137e6d, 5.9726e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.9291e4d)));
-                    lst_Pianeti.Items.Add(new Pianeta("Marte", Color.Red, 3.40245e6d, 6.4185e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.1972e4d)));
-                    //giove
-                    //saturno
-                    //urano
-                    //nettuno
-                    //pluto, forse
+                    lst_Pianeti.Items.Add(new Pianeta("Mercurio", Color.Gray, 2.4397e6d, 3.3011e23, new Vettore(xs + 6.982e10, ys), new Vettore(0, 3.886e4)));
+                    lst_Pianeti.Items.Add(new Pianeta("Venere", Color.Orange, 6.0518e6d, 4.8675e24, new Vettore(xs + 1.0894e11, ys), new Vettore(0, 3.479e4)));
+                    lst_Pianeti.Items.Add(Terra);
+                    lst_Pianeti.Items.Add(Marte);
+                    lst_Pianeti.Items.Add(new Pianeta("Giove", Color.Brown, 7.1492e7, 1.89819e27, new Vettore(xs + 8.16081455e11, ys), new Vettore(0, 1.2446e4)));
+                    lst_Pianeti.Items.Add(new Pianeta("Saturno", Color.GreenYellow, 6.0268e7, 5.6834e26, new Vettore(xs + 1.5155e12, ys), new Vettore(0, 9.09e3)));
+                    lst_Pianeti.Items.Add(new Pianeta("Urano", Color.LightBlue, 2.5559e7, 8.6813e25, new Vettore(xs + 3.00362e12, ys), new Vettore(0, 6.49e3)));
+                    lst_Pianeti.Items.Add(new Pianeta("Nettuno", Color.Blue, 2.4764e7, 1.0243e26, new Vettore(xs + 4.536874325e12, ys), new Vettore(0, 5.385e3)));
                     break;
                 case 3:
-                    lst_Pianeti.Items.Add(new Pianeta("Sole", Color.Yellow, 7e8d, 2e30d, new Vettore(xs, ys), new Vettore(0d, 0d)));
-                    //alcuni meteoriti/asteroidi
+                    //alcuni meteoriti/asteroidi, forse
                     break;
                 default:
                     break;
@@ -362,3 +359,4 @@ namespace Simulatore_Pianeti
         #endregion
     }
 }
+//lst_Pianeti.Items.Add(new Pianeta("Luna", Color.White, 1.7e6, 7.342e22, new Vettore(Terra.Posizione.X + 4.055e8, ys), new Vettore(0, Terra.Velocità.Y + 9.64e2d)));

@@ -49,7 +49,7 @@
             // 
             this.label.AutoSize = true;
             this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Location = new System.Drawing.Point(12, 9);
+            this.label.Location = new System.Drawing.Point(8, 9);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(144, 78);
             this.label.TabIndex = 0;
@@ -69,13 +69,13 @@
             // 
             this.trackBar_speed.Enabled = false;
             this.trackBar_speed.Location = new System.Drawing.Point(896, 619);
-            this.trackBar_speed.Maximum = 200;
-            this.trackBar_speed.Minimum = -200;
+            this.trackBar_speed.Maximum = 220;
+            this.trackBar_speed.Minimum = -220;
             this.trackBar_speed.Name = "trackBar_speed";
             this.trackBar_speed.Size = new System.Drawing.Size(215, 45);
             this.trackBar_speed.TabIndex = 2;
             this.trackBar_speed.TickFrequency = 10;
-            this.trackBar_speed.Value = 20;
+            this.trackBar_speed.Value = 36;
             this.trackBar_speed.Scroll += new System.EventHandler(this.trackBar_speed_Scroll);
             // 
             // lbl_speed
@@ -86,13 +86,13 @@
             this.lbl_speed.Name = "lbl_speed";
             this.lbl_speed.Size = new System.Drawing.Size(111, 13);
             this.lbl_speed.TabIndex = 4;
-            this.lbl_speed.Text = "33.33g/s; 20.00h/tick";
+            this.lbl_speed.Text = "60.00g/s; 36.00h/tick";
             // 
             // lbl_legenda
             // 
             this.lbl_legenda.AutoSize = true;
             this.lbl_legenda.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_legenda.Location = new System.Drawing.Point(12, 566);
+            this.lbl_legenda.Location = new System.Drawing.Point(8, 566);
             this.lbl_legenda.Name = "lbl_legenda";
             this.lbl_legenda.Size = new System.Drawing.Size(309, 91);
             this.lbl_legenda.TabIndex = 5;
