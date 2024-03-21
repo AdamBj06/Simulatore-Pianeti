@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Simulatore_Pianeti
 {
     public partial class Form1 : Form
-    {   //da fare: aggiungere altri esempi...
+    {
         public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
 
         public Form1()
