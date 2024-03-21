@@ -248,12 +248,12 @@ namespace Simulatore_Pianeti
             {
                 btn_tema.Text = "Tema scuro";
 
-                this.BackColor = SystemColors.Control;//un colore di default di windows
+                this.BackColor = SystemColors.Control;//il colore di default di windows
                 foreach (Control control in Controls)//un controllo e per esempio textbox, listbox, label ecc.
                 {//cambia il colore di tutti i controlli nel form tranne i pulsanti add, play e remove
                     if(control != btn_add && control != btn_remove && control != btn_play && !(control is Label))
                     {
-                        control.BackColor = SystemColors.Window;//un colore di default di windows
+                        control.BackColor = SystemColors.Window;//il colore di default di windows
                         control.ForeColor = SystemColors.ControlText;
                     }
                     else if(control is Label)
