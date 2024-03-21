@@ -149,7 +149,6 @@ namespace Simulatore_Pianeti
             txt_massa.Clear();
             cmb_colore.SelectedIndex = -1;
             cmb_pianetiSalvati.SelectedIndex = -1;
-            //Cmb_esempi.SelectedIndex = -1;
             btn_play.Text = "Play";
             Refresh();
         }
