@@ -35,33 +35,39 @@ namespace Simulatore_Pianeti
         private void Btn_Add_Click(object sender, EventArgs e)
         {
             Pianeta pianeta = CreaPianeta();
-            foreach (Pianeta p in lst_Pianeti.Items)
+            if(pianeta != null)
             {
-                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                foreach (Pianeta p in lst_Pianeti.Items)
                 {
-                    MessageBox.Show("Pianeta già presente", "Errore");
-                    return;
+                    if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                    {
+                        MessageBox.Show("Pianeta già presente", "Errore");
+                        return;
+                    }
                 }
-            }
-            lst_Pianeti.Items.Add(pianeta);
+                lst_Pianeti.Items.Add(pianeta);
 
-            Clear();
+                Clear();
+            }
         }
 
         private void btn_Salva_Click(object sender, EventArgs e)
         {
             Pianeta pianeta = CreaPianeta();
-            foreach (Pianeta p in cmb_pianetiSalvati.Items)
+            if (pianeta != null)
             {
-                if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                foreach (Pianeta p in cmb_pianetiSalvati.Items)
                 {
-                    MessageBox.Show("Pianeta già presente", "Errore");
-                    return;
+                    if (p.Posizione == pianeta.Posizione && p.Massa == pianeta.Massa && p.Velocità == pianeta.Velocità)
+                    {
+                        MessageBox.Show("Pianeta già presente", "Errore");
+                        return;
+                    }
                 }
-            }
-            cmb_pianetiSalvati.Items.Add(pianeta);
+                cmb_pianetiSalvati.Items.Add(pianeta);
 
-            Clear();
+                Clear();
+            }
         }
 
         private Pianeta CreaPianeta()//crea il pianeta leggendo le textbox (il pulsante add)
