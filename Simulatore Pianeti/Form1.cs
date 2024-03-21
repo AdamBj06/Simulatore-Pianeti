@@ -209,7 +209,7 @@ namespace Simulatore_Pianeti
                                               //"nome", colore, raggio, massa, posizione all'afelio (xs + afelio), velocità all'afelio (vel. min.);
             Pianeta Terra = new Pianeta("Terra", Color.Cyan, 6.378137e6d, 5.9726e24d, new Vettore(xs + 1.52097701e11d, ys), new Vettore(0d, 2.9291e4d));
             Pianeta Marte = new Pianeta("Marte", Color.Red, 3.40245e6d, 6.4185e23d, new Vettore(xs + 2.49228730e11d, ys), new Vettore(0d, 2.1972e4d));
-            switch (Cmb_esempi.SelectedIndex)//sistemare valori
+            switch (Cmb_esempi.SelectedIndex)
             {
                 case 0://Sistema Sole e Terra
                     lst_Pianeti.Items.Add(Terra);
@@ -218,7 +218,7 @@ namespace Simulatore_Pianeti
                     lst_Pianeti.Items.Add(Terra);
                     lst_Pianeti.Items.Add(Marte);
                     break;
-                case 2://sistema solare
+                case 2://sistema solare intero
                     lst_Pianeti.Items.Add(new Pianeta("Mercurio", Color.Gray, 2.4397e6d, 3.3011e23, new Vettore(xs + 6.982e10, ys), new Vettore(0, 3.886e4)));
                     lst_Pianeti.Items.Add(new Pianeta("Venere", Color.Orange, 6.0518e6d, 4.8675e24, new Vettore(xs + 1.0894e11, ys), new Vettore(0, 3.479e4)));
                     lst_Pianeti.Items.Add(Terra);
@@ -229,7 +229,7 @@ namespace Simulatore_Pianeti
                     lst_Pianeti.Items.Add(new Pianeta("Nettuno", Color.Blue, 2.4764e7, 1.0243e26, new Vettore(xs + 4.536874325e12, ys), new Vettore(0, 5.385e3)));
                     break;
                 case 3:
-                    //alcuni meteoriti/asteroidi, forse
+                    //alcuni meteoriti/asteroidi
                     break;
                 default:
                     break;
