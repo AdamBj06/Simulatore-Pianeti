@@ -309,8 +309,8 @@ namespace Simulatore_Pianeti
 
             DisegnaPosizione();
 
-            g.DrawLine(nero, 748, Height - 48, Width - 30, Height - 48);//asse x
-            g.DrawLine(nero, 748, Height - 48, 748, 15);//asse y
+            g.DrawLine(nero, 788, Height - 48, Width - 30, Height - 48);//asse x
+            g.DrawLine(nero, 788, Height - 48, 788, 15);//asse y
         }
 
         int xi, yi;
@@ -318,14 +318,14 @@ namespace Simulatore_Pianeti
         {
             Graphics g = CreateGraphics();
             Brush sfondo = new SolidBrush(BackColor);
-            g.FillRectangle(sfondo, 750, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
+            g.FillRectangle(sfondo, 790, 0, Width, Height - 50);//ripulisce l'area in cui si può disegnare
 
             xi = e.X; yi = e.Y;//posizione del mouse
-            if (xi > 750 && yi < Height - 50)//se il click avviene nella parte del form permesssa
+            if (xi > 790 && yi < Height - 50)//se il click avviene nella parte del form permesssa
             {
                 if (inPos)
                 {
-                    txt_posizione.Text = new Vettore((xi - 750) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos - origine (pos iniziale)
+                    txt_posizione.Text = new Vettore((xi - 790) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos - origine (pos iniziale)
                     g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
                 }
             }
@@ -337,7 +337,7 @@ namespace Simulatore_Pianeti
             Pen nero = new Pen(Color.Black, 3);
 
             int xf = e.X; int yf = e.Y;
-            if (xi > 750 && yi < Height - 50 && xf > 750 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
+            if (xi > 790 && yi < Height - 50 && xf > 780 && yf < Height - 50)//se il rilascio del click avviene nella parte del form permesssa
             {
                 if(inVel)
                 {
@@ -352,7 +352,7 @@ namespace Simulatore_Pianeti
             Graphics g = CreateGraphics();
             foreach(Pianeta p in lst_Pianeti.Items)
             {
-                g.FillEllipse(new SolidBrush(p.Colore), (float)((p.Posizione.X / 1e9) + 750), (float)((-p.Posizione.Y / 1e9) + Height - 48), 10, 10);
+                g.FillEllipse(new SolidBrush(p.Colore), (float)((p.Posizione.X / 1e9) + 790), (float)((-p.Posizione.Y / 1e9) + Height - 48), 10, 10);
             }
         }
         #endregion

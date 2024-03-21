@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Simulatore_Pianeti
 {
-    public class Pianeta
+    public class Pianeta : IFormattable
     {
         public String Nome { get; set; }
         public Color Colore { get; set; }
@@ -28,10 +29,32 @@ namespace Simulatore_Pianeti
             Velocità = v;
         }
 
-        public override string ToString()//(per adam) guardare Iformattable
+        //Il prof ha suggerito di usare Iformattable: https://learn.microsoft.com/en-us/dotnet/api/system.iformattable?view=net-8.0
+        public override string ToString()
         {
-            return string.Format("{0} ({1}): m: {2}kg; pos.in.: {3}; vel.in.: {4}",
-                                 Nome, Colore.Name, Massa.ToString("0.0000E0"), Posizione.ToString("0.0000E0"), Velocità .ToString("0.0000E0"));
-        }//$"Massa: {Massa:0.0000E0}; Posizione in.: {Posizione:0.0000E0}; Velocità in. {Velocità:0.0000E0}"
+            return this.ToString("G", CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format)
+        {
+            return this.ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format, IFormatProvider provider)
+        {
+            if (String.IsNullOrEmpty(format)) format = "G";
+            if (provider == null) provider = CultureInfo.CurrentCulture;
+
+            switch (format.ToUpperInvariant())
+            {
+                case "G":
+                case "BASIC":
+                    return $"{Nome} ({Colore.Name}); Massa: {Massa:0.0000E0}; Posizione in.: {Posizione:E3}; Velocità in. {Velocità:E3}";
+                case "FULL":
+                    return $"Pianeta: {Nome} ({Colore.Name})\nMassa: {Massa}\nPosizione: {Posizione:E4}\nVelocità: {Velocità:E4}\nRaggio: {Raggio:0.0000E0}";
+                default:
+                    throw new FormatException(String.Format("The {0} format string is not supported.", format));
+            }
+        }
     }
 }

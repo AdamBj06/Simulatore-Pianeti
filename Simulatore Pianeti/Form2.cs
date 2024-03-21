@@ -158,8 +158,7 @@ namespace Simulatore_Pianeti
 
         public string InformazioniPianeta(Pianeta p)//stampa le informazioni del pianeta
         {//(per adam) guardare Iformattable
-            return string.Format("Pianeta: {0} ({1})\nMassa: {2}\nPosizione: {3}\nVelocità: {4}\nRaggio: {5}",
-                                 p.Nome, p.Colore.Name, p.Massa, p.Posizione.ToString("0.0000E0"), p.Velocità.ToString("0.0000E0"), p.Raggio.ToString("0.0000E0"));
+            return p.ToString("FULL");
         }
         #endregion
         
