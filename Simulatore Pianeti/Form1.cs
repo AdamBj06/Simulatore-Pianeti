@@ -192,8 +192,8 @@ namespace Simulatore_Pianeti
         {
             txt_nome.Text = p.Nome;
             txt_raggio.Text = p.Raggio.ToString("0.0000E0");
-            txt_posizione.Text = p.Posizione.ToString("0.0000E0");
-            txt_velocità.Text = p.Velocità.ToString("0.0000E0");
+            txt_posizione.Text = p.Posizione.ToString("E4");
+            txt_velocità.Text = p.Velocità.ToString("E4");
             txt_massa.Text = p.Massa.ToString("0.0000E0");
             cmb_colore.SelectedIndex = cmb_colore.Items.IndexOf(p.Colore);
         }
@@ -332,7 +332,7 @@ namespace Simulatore_Pianeti
             {
                 if (inPos)
                 {
-                    txt_posizione.Text = new Vettore((xi - 790) * 1e9, (Height - 48 - yi) * 1e9).ToString("0.0000E0");//pos - origine (pos iniziale)
+                    txt_posizione.Text = new Vettore((xi - 790) * 1e9, (Height - 48 - yi) * 1e9).ToString("E4");//pos - origine (pos iniziale)
                     g.FillEllipse(Brushes.Black, xi, yi, 8, 8);
                 }
             }
@@ -348,7 +348,7 @@ namespace Simulatore_Pianeti
             {
                 if(inVel)
                 {
-                    txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("0.0000E0");//pos finale - pos iniziale, in y invertito perchè siamo nel 4 quadrante
+                    txt_velocità.Text = new Vettore((xf - xi) * 5e2, (yi - yf) * 5e2).ToString("E4");//pos finale - pos iniziale, in y invertito perchè siamo nel 4 quadrante
                     g.DrawLine(nero, xi, yi, xf, yf);
                 }
             }
