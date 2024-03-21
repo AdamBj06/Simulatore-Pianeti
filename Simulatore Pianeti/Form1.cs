@@ -21,7 +21,7 @@ namespace Simulatore_Pianeti
         {
             InitializeComponent();
             #region Riempi la combobox dei colori
-            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//Carolin (riempe la combobox dei colori con tutti i colori esistenti nel sistema)
+            foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//(Carolin) riempe la combobox dei colori con tutti i colori esistenti nel sistema
             {
                 Color color = Color.FromKnownColor(knownColor);
                 if (!color.IsSystemColor)
