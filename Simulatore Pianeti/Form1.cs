@@ -20,6 +20,7 @@ namespace Simulatore_Pianeti
         public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pianeta>));
 
+
         public Form1()
         {
             InitializeComponent();
@@ -181,6 +182,14 @@ namespace Simulatore_Pianeti
             Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
             this.Visible = false;//rende invisibile il primo form
             Form2.Show();//fa vedere il secondo form
+
+            TextWriter textWriter = new StreamWriter("PianetiSalvati.txt");
+            List<Pianeta> pns = new List<Pianeta>();
+            foreach (Pianeta p in cmb_pianetiSalvati.Items)
+            {
+                pns.Add(p);           
+            }
+            xmlSerializer.Serialize(textWriter, pns);
         }
 
         private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
