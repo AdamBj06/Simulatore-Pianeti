@@ -5,13 +5,22 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Simulatore_Pianeti
 {
     public class Pianeta : IFormattable
     {
-        public String Nome { get; set; }
+        [XmlAttribute]
+        public string Nome { get; set; }
+        [XmlIgnore]
         public Color Colore { get; set; }
+        [XmlElement("Colore")]
+        public int ColoreAsArgb
+        {
+            get { return Colore.ToArgb(); }
+            set { Colore = Color.FromArgb(value); }
+        }
         public double Massa { get; set; }//in kilogrammi
         public double Raggio { get; set; }//in metri
         public Vettore Posizione { get; set; }//in metri
@@ -19,6 +28,7 @@ namespace Simulatore_Pianeti
         public Vettore Forza { get; set; }//che agisce sul corpo
         public Vettore Accelerazione { get; set; }
 
+        public Pianeta() { }
         public Pianeta(string n, Color c, double r, double m, Vettore pos, Vettore v)
         {
             Nome = n;
@@ -42,7 +52,7 @@ namespace Simulatore_Pianeti
 
         public string ToString(string format, IFormatProvider provider)
         {
-            if (String.IsNullOrEmpty(format)) format = "G";
+            if (string.IsNullOrEmpty(format)) format = "G";
             if (provider == null) provider = CultureInfo.CurrentCulture;
 
             switch (format.ToUpperInvariant())
@@ -53,7 +63,7 @@ namespace Simulatore_Pianeti
                 case "FULL":
                     return $"Pianeta: {Nome} ({Colore.Name})\nMassa: {Massa}\nPosizione: {Posizione:E4}\nVelocità: {Velocità:E4}\nRaggio: {Raggio:0.0000E0}";
                 default:
-                    throw new FormatException(String.Format("The {0} format string is not supported.", format));
+                    throw new FormatException(string.Format("The {0} format string is not supported.", format));
             }
         }
     }
