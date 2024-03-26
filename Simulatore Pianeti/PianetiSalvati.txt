@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPianeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Pianeta Nome="Sole">
+    <Colore>-256</Colore>
+    <Massa>1.9891E+30</Massa>
+    <Raggio>695500000</Raggio>
+    <Posizione>
+      <X>90660000000</X>
+      <Y>76500000000</Y>
+    </Posizione>
+    <Velocità>
+      <X>0</X>
+      <Y>0</Y>
+    </Velocità>
+  </Pianeta>
+  <Pianeta Nome="Terra">
+    <Colore>-16711681</Colore>
+    <Massa>5.9726E+24</Massa>
+    <Raggio>6378100</Raggio>
+    <Posizione>
+      <X>242760000000</X>
+      <Y>76500000000</Y>
+    </Posizione>
+    <Velocità>
+      <X>0</X>
+      <Y>29291</Y>
+    </Velocità>
+  </Pianeta>
+</ArrayOfPianeta>

@@ -19,6 +19,7 @@ namespace Simulatore_Pianeti
     {
         public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pianeta>));
+        string PianetiSalvati_Path;
 
         public Form1()
         {
@@ -33,10 +34,12 @@ namespace Simulatore_Pianeti
                     cmb_colore.Items.Add(color);
                 }
             }
-            
+
             //deserializzazione
-            TextReader textReader = new StreamReader(Path.Combine(Environment.CurrentDirectory, "PianetiSalvati.txt"));
-            if(new FileInfo("PianetiSalvati.txt").Length != 0)
+            char[] trimChars =  @"\bin\Debug".ToCharArray();
+            PianetiSalvati_Path = Path.Combine(Environment.CurrentDirectory.TrimEnd(trimChars) + "i", "PianetiSalvati.txt");
+            TextReader textReader = new StreamReader(PianetiSalvati_Path);
+            if(new FileInfo(PianetiSalvati_Path).Length != 0)
             {
                 List<Pianeta> pn = (List<Pianeta>)xmlSerializer.Deserialize(textReader);
                 foreach (Pianeta p in pn)
@@ -181,6 +184,14 @@ namespace Simulatore_Pianeti
             Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
             this.Visible = false;//rende invisibile il primo form
             Form2.Show();//fa vedere il secondo form
+
+            TextWriter textWriter = new StreamWriter("PianetiSalvati.txt");
+            List<Pianeta> pns = new List<Pianeta>();
+            foreach (Pianeta p in cmb_pianetiSalvati.Items)
+            {
+                pns.Add(p);           
+            }
+            xmlSerializer.Serialize(textWriter, pns);
         }
 
         private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,7 +226,7 @@ namespace Simulatore_Pianeti
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            TextWriter textWriter = new StreamWriter("PianetiSalvati.txt");
+            TextWriter textWriter = new StreamWriter(PianetiSalvati_Path);
             List<Pianeta> pns = new List<Pianeta>();
             foreach (Pianeta p in cmb_pianetiSalvati.Items)
             {
