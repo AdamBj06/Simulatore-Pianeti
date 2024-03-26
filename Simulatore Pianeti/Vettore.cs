@@ -12,6 +12,7 @@ namespace Simulatore_Pianeti
         public double X { get; set; }
         public double Y { get; set; }
 
+        public Vettore() { }
         public Vettore(double x, double y)
         {
             X = x; Y = y;
@@ -30,7 +31,7 @@ namespace Simulatore_Pianeti
 
         public string ToString(string format, IFormatProvider provider)
         {
-            if (String.IsNullOrEmpty(format)) format = "G";
+            if (string.IsNullOrEmpty(format)) format = "G";
             if (provider == null) provider = CultureInfo.CurrentCulture;
 
             switch (format.ToUpperInvariant())
@@ -41,7 +42,7 @@ namespace Simulatore_Pianeti
                 case "E4":
                     return $"{X:0.0000E0};{Y:0.0000E0}";
                 default:
-                    throw new FormatException(String.Format("The {0} format string is not supported.", format));
+                    throw new FormatException(string.Format("The {0} format string is not supported.", format));
             }
         }
 

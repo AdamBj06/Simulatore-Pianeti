@@ -233,21 +233,20 @@ namespace Simulatore_Pianeti
         {
             float mx0, my0;
             scr2obj(out mx0, out my0, e.X, e.Y);
-            if (e.Delta < 0)
+            if (e.Delta < 0 && zoom > 0.05f)
             {
                 zoom -= 0.05f;
                 obj2scr(out mx0, out my0, mx0, my0);
                 traslazioneX += (e.X - mx0) / zoom;
                 traslazioneY += (e.Y - my0) / zoom;
             }
-            else
+            else if(e.Delta > 0)
             {
                 zoom += 0.05f;
                 obj2scr(out mx0, out my0, mx0, my0);
                 traslazioneX += (e.X - mx0) / zoom;
                 traslazioneY += (e.Y - my0) / zoom;
             }
-            
         }
         void scr2obj(out float ox, out float oy, float sx, float sy)
         {

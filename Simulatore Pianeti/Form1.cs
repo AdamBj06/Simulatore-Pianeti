@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Simulatore_Pianeti
@@ -16,11 +18,13 @@ namespace Simulatore_Pianeti
     public partial class Form1 : Form
     {
         public static Planetario planetario = new Planetario();//static per poterlo usare anche nel secondo form
+        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Pianeta>));
+
 
         public Form1()
         {
             InitializeComponent();
-            #region Riempi la combobox dei colori
+            #region Riempi le combobox
             foreach (KnownColor knownColor in Enum.GetValues(typeof(KnownColor)))//(Carolin) riempe la combobox dei colori con tutti i colori esistenti nel sistema
             {
                 Color color = Color.FromKnownColor(knownColor);
@@ -29,9 +33,20 @@ namespace Simulatore_Pianeti
                     cmb_colore.Items.Add(color);
                 }
             }
+            
+            //deserializzazione
+            TextReader textReader = new StreamReader(Path.Combine(Environment.CurrentDirectory, "PianetiSalvati.txt"));
+            if(new FileInfo("PianetiSalvati.txt").Length != 0)
+            {
+                List<Pianeta> pn = (List<Pianeta>)xmlSerializer.Deserialize(textReader);
+                foreach (Pianeta p in pn)
+                {
+                    cmb_pianetiSalvati.Items.Add(p);
+                }
+            }
             #endregion
         }
-        
+
         #region impostazione
         private void Btn_Add_Click(object sender, EventArgs e)
         {
@@ -166,6 +181,14 @@ namespace Simulatore_Pianeti
             Form2.Owner = this;//serve per avere un riferimento al primo form nel secondo
             this.Visible = false;//rende invisibile il primo form
             Form2.Show();//fa vedere il secondo form
+
+            TextWriter textWriter = new StreamWriter("PianetiSalvati.txt");
+            List<Pianeta> pns = new List<Pianeta>();
+            foreach (Pianeta p in cmb_pianetiSalvati.Items)
+            {
+                pns.Add(p);           
+            }
+            xmlSerializer.Serialize(textWriter, pns);
         }
 
         private void lst_Pianeti_SelectedIndexChanged(object sender, EventArgs e)
