@@ -26,4 +26,17 @@
       <Y>29291</Y>
     </Velocità>
   </Pianeta>
+  <Pianeta Nome="Marte">
+    <Colore>-65536</Colore>
+    <Massa>6.4185E+23</Massa>
+    <Raggio>3402500</Raggio>
+    <Posizione>
+      <X>339890000000</X>
+      <Y>76500000000</Y>
+    </Posizione>
+    <Velocità>
+      <X>0</X>
+      <Y>21972</Y>
+    </Velocità>
+  </Pianeta>
 </ArrayOfPianeta>
